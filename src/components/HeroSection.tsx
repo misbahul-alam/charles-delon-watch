@@ -16,7 +16,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOrderClick }) => {
     <section id="hero" className="relative pt-10 sm:pt-16 pb-16 sm:pb-24 bg-white border-b border-neutral-200 overflow-hidden">
       
       {/* Ambient background soft glow (strictly contained) */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-[450px] bg-neutral-100/70 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-112.5 bg-neutral-100/70 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         
@@ -71,7 +71,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOrderClick }) => {
                         style={{ backgroundColor: v.colorHex }}
                       />
                       <span>{v.nameBangla}</span>
-                      {isSelected && <Check className="w-3.5 h-3.5 text-white ml-0.5 stroke-[3]" />}
+                      {isSelected && <Check className="w-3.5 h-3.5 text-white ml-0.5 stroke-3" />}
                     </button>
                   );
                 })}
@@ -132,32 +132,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOrderClick }) => {
                 className="w-full h-full object-contain transition-all duration-500 animate-in fade-in"
               />
 
-            </div>
-
-            {/* Quick 3-Thumbnail Preview Bar */}
-            <div className="flex items-center justify-center gap-3 mt-4">
-              {WATCH_VARIANTS.map((v) => {
-                const isSelected = selectedVariant.code === v.code;
-                return (
-                  <button
-                    key={v.code}
-                    type="button"
-                    onClick={() => setSelectedVariant(v)}
-                    className={`w-16 h-16 rounded-xl overflow-hidden border transition-all cursor-pointer p-1.5 bg-neutral-50 flex items-center justify-center ${
-                      isSelected
-                        ? 'border-neutral-900 ring-2 ring-neutral-900/20 scale-105 shadow-xs bg-white'
-                        : 'border-neutral-200 opacity-60 hover:opacity-100'
-                    }`}
-                    title={v.nameBangla}
-                  >
-                    <img
-                      src={v.primaryImage}
-                      alt={v.nameBangla}
-                      className="w-full h-full object-contain"
-                    />
-                  </button>
-                );
-              })}
             </div>
           </div>
 

@@ -1,19 +1,52 @@
 import React from 'react';
-import { Clock, Award, Compass, ChevronRight } from 'lucide-react';
-import { imgBlueHero, imgBlackFeature } from '../images';
+import { Award, Compass, Sparkles, Droplets, Cpu, Layers, ShieldCheck, Watch } from 'lucide-react';
+import { imgBlueFeature, imgBlackFeature } from '../images';
 
 export const ProductBenefits: React.FC = () => {
   const technicalSpecs = [
-    { label: 'CALIBRE // MOVEMENT', value: 'PRECISION QUARTZ ANALOG' },
-    { label: 'CASE DIAMETER', value: '40 MM // SLIM PROFILE' },
-    { label: 'WATER RESISTANCE', value: '3 ATM (30 METERS DAILY PROOF)' },
-    { label: 'CRYSTAL // GLASS', value: 'HARDENED MINERAL PRISM' },
-    { label: 'STRAP COMPOSITION', value: 'ULTRA-SOFT HYPOALLERGENIC SILICONE' },
-    { label: 'DIAL ARCHITECTURE', value: 'LIGHT-REACTIVE MULTI-GRADIENT' },
-    { label: 'INDICES // NUMERALS', value: 'HIGH-CONTRAST ARABIC 1–12' },
-    { label: 'WRIST FITMENT', value: 'UNISEX ERGONOMIC (FOR HIM & HER)' },
+    {
+      icon: Cpu,
+      category: 'CALIBRE // MOVEMENT',
+      titleBangla: 'প্রেসিশন অ্যানালগ কোয়ার্টজ মুভমেন্ট',
+      specEnglish: 'Precision Quartz Analog // Long-Life Battery',
+      desc: 'সুইস আর্কিটেকচার অনুযায়ী তৈরি অ্যানালগ গিয়ার যা দেয় নিখুঁত সময় ও দীর্ঘস্থায়ী নির্ভরযোগ্য ব্যাটারি লাইফ।',
+    },
+    {
+      icon: Sparkles,
+      category: 'CRYSTAL // GLASS',
+      titleBangla: 'হার্ডেনড মিনারেল প্রিজম গ্লাস',
+      specEnglish: 'Mineral Prism Crystal // Scratch-Resistant',
+      desc: 'দৈনন্দিন ব্যবহারে দাগ ও আঁচড় প্রতিরোধী বিশেষ কোটিং এবং আলোর প্রতিফলনে দৃষ্টিনন্দন গ্রেডিয়েন্ট লুক।',
+    },
+    {
+      icon: Droplets,
+      category: 'WATER RESISTANCE',
+      titleBangla: '৩ এটিএম ওয়াটারপ্রুফ আর্কিটেকচার',
+      specEnglish: '3 ATM // 30 Meters Daily Proof',
+      desc: '৩-লেয়ার অভ্যন্তরীণ গ্যাসকেট সিলিং—হাত ধোয়া, ওযু কিংবা আকস্মিক বৃষ্টির পানিতে ১০০% নিশ্চিন্ত ব্যবহার।',
+    },
+    {
+      icon: Layers,
+      category: 'CASE & PROFILE',
+      titleBangla: '৪০ মিমি স্লিম এরগোনোমিক কেসিং',
+      specEnglish: '40mm Diameter // Slim Ergonomic Profile',
+      desc: 'হালকা ও টেকসই গঠন যা কব্জিতে কোনো বাড়তি চাপ বা ভারী ভাব তৈরি করে না, সারাদিন স্বাচ্ছন্দ্য বজায় রাখে।',
+    },
+    {
+      icon: ShieldCheck,
+      category: 'STRAP COMPOSITION',
+      titleBangla: 'হাইপোঅ্যালার্জেনিক আল্ট্রা-সফট সিলিকন',
+      specEnglish: 'Ultra-Soft Hypoallergenic Silicone Strap',
+      desc: 'নরম রাবার উপাদান যা শতভাগ ত্বকবান্ধব এবং নমনীয়, দীর্ঘ ব্যবহারে কোনো দাগ বা ঘাম জমতে দেয় না।',
+    },
+    {
+      icon: Watch,
+      category: 'INDICES & FITMENT',
+      titleBangla: '১-১২ অ্যানালগ মার্কার ও ইউনিসেক্স সাইজ',
+      specEnglish: 'Arabic 1–12 Numerals // For Him & Her',
+      desc: 'সুস্পষ্ট ফন্টে মুদ্রিত মার্কারের কারণে এক পলকেই নিখুঁত সময় দেখা যায়। ছেলে ও মেয়ে উভয়ের কব্জিতে মানানসই।',
+    },
   ];
-
 
   return (
     <section id="features" className="bg-[#fafbfc] border-b border-neutral-200 divide-y divide-neutral-200/80">
@@ -41,7 +74,7 @@ export const ProductBenefits: React.FC = () => {
             <div className="lg:col-span-6 order-2 lg:order-1">
               <div className="relative rounded-3xl overflow-hidden border border-neutral-200/80 bg-white shadow-lg aspect-square max-w-lg mx-auto group">
                 <img
-                  src={imgBlueHero}
+                  src={imgBlueFeature}
                   alt="Charles Delon Light-Reactive Gradient Dial"
                   className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-102"
                   loading="lazy"
@@ -150,84 +183,59 @@ export const ProductBenefits: React.FC = () => {
         </div>
       </div>
 
-      {/* Horology Specifications & Technical Precision Matrix */}
+      {/* Horology Specifications & Technical Precision Matrix (Unified, Non-Duplicate) */}
       <div className="py-16 sm:py-24 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
-            
-            {/* Left: Engineering & Craftsmanship Standards */}
-            <div className="lg:col-span-6 space-y-6">
-              <div className="space-y-1">
-                <div className="text-[11px] uppercase tracking-[0.25em] text-neutral-400 font-semibold flex items-center gap-2">
-                  <Compass className="w-3.5 h-3.5 text-neutral-900" />
-                  <span className="font-['Plus_Jakarta_Sans',sans-serif]">CRAFTSMANSHIP STANDARDS</span>
-                  <span className="text-neutral-300">//</span>
-                  <span>নির্মাণ মানদণ্ড</span>
-                </div>
-                <h3 className="text-2xl sm:text-3xl font-bold text-neutral-900">
-                  সুইস কারিগরি ও নিখুঁত ফিনিশিং
-                </h3>
-              </div>
-
-              <div className="space-y-3 pt-1">
-                <div className="p-4 rounded-2xl bg-neutral-50/70 border border-neutral-200/80 space-y-1">
-                  <div className="flex items-center gap-2 text-xs sm:text-sm font-bold text-neutral-900">
-                    <ChevronRight className="w-3.5 h-3.5 text-neutral-900 shrink-0" />
-                    <span>হার্ডেনড মিনারেল প্রিজম গ্লাস</span>
-                  </div>
-                  <p className="text-[11px] sm:text-xs text-neutral-600 leading-relaxed pl-5 font-normal">
-                    দৈনন্দিন ব্যবহারে দাগ ও আঁচড় প্রতিরোধী বিশেষ মিনারেল ক্রিস্টাল কোটিং।
-                  </p>
-                </div>
-
-                <div className="p-4 rounded-2xl bg-neutral-50/70 border border-neutral-200/80 space-y-1">
-                  <div className="flex items-center gap-2 text-xs sm:text-sm font-bold text-neutral-900">
-                    <ChevronRight className="w-3.5 h-3.5 text-neutral-900 shrink-0" />
-                    <span>প্রেসিশন কোয়ার্টজ মুভমেন্ট</span>
-                  </div>
-                  <p className="text-[11px] sm:text-xs text-neutral-600 leading-relaxed pl-5 font-normal">
-                    সুইস আর্কিটেকচার অনুযায়ী তৈরি অ্যানালগ গিয়ার যা দেয় নিখুঁত সময় ও দীর্ঘস্থায়ী ব্যাটারি ব্যাকআপ।
-                  </p>
-                </div>
-
-                <div className="p-4 rounded-2xl bg-neutral-50/70 border border-neutral-200/80 space-y-1">
-                  <div className="flex items-center gap-2 text-xs sm:text-sm font-bold text-neutral-900">
-                    <ChevronRight className="w-3.5 h-3.5 text-neutral-900 shrink-0" />
-                    <span>স্লিম এরগোনোমিক কেসিং</span>
-                  </div>
-                  <p className="text-[11px] sm:text-xs text-neutral-600 leading-relaxed pl-5 font-normal">
-                    কব্জিতে অতিরিক্ত ভারী ভাব তৈরি করে না, সারাদিন স্বাচ্ছন্দ্যে পরিধানযোগ্য।
-                  </p>
-                </div>
-              </div>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 space-y-12">
+          
+          {/* Section Header */}
+          <div className="text-center max-w-2xl mx-auto space-y-2">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100 text-neutral-800 text-[11px] font-['Plus_Jakarta_Sans',sans-serif] uppercase tracking-[0.25em] font-bold">
+              <Compass className="w-3.5 h-3.5 text-neutral-900" />
+              <span>HOROLOGY ARCHITECTURE // TECHNICAL MATRIX</span>
             </div>
-
-            {/* Right: Technical Specifications Matrix */}
-            <div className="lg:col-span-6 space-y-6">
-              <div className="space-y-1">
-                <div className="text-[11px] uppercase tracking-[0.25em] text-neutral-400 font-semibold flex items-center gap-2">
-                  <Clock className="w-3.5 h-3.5 text-neutral-900" />
-                  <span className="font-['Plus_Jakarta_Sans',sans-serif]">DATA SHEET</span>
-                  <span className="text-neutral-300">//</span>
-                  <span>প্রযুক্তিগত বিবরণ</span>
-                </div>
-                <h3 className="text-2xl sm:text-3xl font-bold text-neutral-900">
-                  সুইস স্ট্যান্ডার্ড স্পেসিফিকেশন
-                </h3>
-              </div>
-
-              {/* Clean Swiss Hairline Table */}
-              <div className="rounded-2xl border border-neutral-200 overflow-hidden bg-white shadow-2xs divide-y divide-neutral-100 text-xs font-['Plus_Jakarta_Sans',sans-serif]">
-                {technicalSpecs.map((spec, i) => (
-                  <div key={i} className="p-3.5 sm:p-4 flex items-center justify-between hover:bg-neutral-50/60 transition-colors">
-                    <span className="text-neutral-500 font-medium">{spec.label}</span>
-                    <span className="text-neutral-900 font-bold text-right">{spec.value}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
+            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-neutral-900 tracking-tight">
+              সুইস স্ট্যান্ডার্ড প্রযুক্তিগত স্পেসিফিকেশন
+            </h3>
+            <p className="text-xs sm:text-sm text-neutral-500 font-normal">
+              স্থায়িত্ব, নিখুঁত সময় ও প্রিমিয়াম ম্যাটেরিয়ালের সর্বোচ্চ মানদণ্ড।
+            </p>
           </div>
+
+          {/* Unified 6-Item Technical Precision Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+            {technicalSpecs.map((spec, i) => {
+              const IconComp = spec.icon;
+              return (
+                <div
+                  key={i}
+                  className="p-6 rounded-3xl bg-neutral-50/70 border border-neutral-200/80 hover:bg-white hover:border-neutral-300 hover:shadow-md transition-all duration-200 space-y-3"
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="w-10 h-10 rounded-2xl bg-white border border-neutral-200 flex items-center justify-center shadow-2xs">
+                      <IconComp className="w-5 h-5 text-neutral-900 stroke-[1.8]" />
+                    </div>
+                    <span className="text-[10px] font-['Plus_Jakarta_Sans',sans-serif] font-bold uppercase tracking-wider text-neutral-400">
+                      {spec.category}
+                    </span>
+                  </div>
+
+                  <div className="space-y-1">
+                    <h4 className="text-sm sm:text-base font-bold text-neutral-900 leading-snug">
+                      {spec.titleBangla}
+                    </h4>
+                    <div className="text-[11px] font-['Plus_Jakarta_Sans',sans-serif] font-semibold text-neutral-500">
+                      {spec.specEnglish}
+                    </div>
+                  </div>
+
+                  <p className="text-xs text-neutral-600 leading-relaxed font-normal pt-1 border-t border-neutral-200/60">
+                    {spec.desc}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+
         </div>
       </div>
 

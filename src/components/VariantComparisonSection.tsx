@@ -75,7 +75,7 @@ export const VariantComparisonSection: React.FC<VariantComparisonSectionProps> =
               </div>
 
               {/* Large Product Canvas with Pedestal */}
-              <div className="relative aspect-square p-6 sm:p-8 flex items-center justify-center bg-gradient-to-b from-neutral-50 via-neutral-100/50 to-neutral-100/80 group-hover:from-white group-hover:to-neutral-50 transition-colors overflow-hidden">
+              <div className="relative aspect-square p-6 sm:p-8 flex items-center justify-center bg-linear-to-b from-neutral-50 via-neutral-100/50 to-neutral-100/80 group-hover:from-white group-hover:to-neutral-50 transition-colors overflow-hidden">
                 <div className="absolute inset-8 rounded-full bg-neutral-200/40 blur-md group-hover:bg-neutral-200/60 transition-colors pointer-events-none" />
                 <img
                   src={variant.primaryImage}

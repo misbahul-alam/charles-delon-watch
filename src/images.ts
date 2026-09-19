@@ -85,20 +85,3 @@ export const WATCH_VARIANTS: WatchVariant[] = [
     ],
   },
 ];
-
-// Backward-compatible exports for any components referencing legacy identifiers
-export const img12816_hero = imgBlueHero;
-export const img12816_front = imgBlueFront;
-export const img12816_cushion = imgBlueFeature;
-
-export const img13279_hero = imgGreyHero;
-export const img13279_front = imgGreyFront;
-export const img13279_cushion = imgGreyHero;
-
-export const img13294_hero = imgBlackHero;
-export const img13294_front = imgBlackFront;
-export const img13294_cushion = imgBlackFeature;
-
-export const img13295_hero = imgBlackHero;
-export const img13295_front = imgBlackFront;
-export const img13295_cushion = imgBlackFeature;

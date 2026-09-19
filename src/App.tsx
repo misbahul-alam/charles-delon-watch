@@ -4,7 +4,6 @@ import { Analytics } from "@vercel/analytics/react";
 import { HeroSection } from "./components/HeroSection";
 import { ProductBenefits } from "./components/ProductBenefits";
 import { VariantComparisonSection } from "./components/VariantComparisonSection";
-import { ProductGallery } from "./components/ProductGallery";
 import { OrderSection } from "./components/OrderSection";
 import { MobileStickyCTA } from "./components/MobileStickyCTA";
 import { WhatsAppButton } from "./components/WhatsAppButton";
@@ -34,7 +33,7 @@ function LandingPage() {
   };
 
   return (
-    <div className="min-h-screen w-full overflow-x-hidden bg-white text-neutral-900 font-['Hind_Siliguri',sans-serif] relative selection:bg-neutral-900 selection:text-white antialiased">
+    <div className="min-h-screen w-full overflow-x-hidden bg-white text-neutral-900 font-bengali relative selection:bg-neutral-900 selection:text-white antialiased">
       {/* 1. Asymmetric Studio Hero Section */}
       <HeroSection onOrderClick={scrollToOrder} />
 
@@ -44,10 +43,7 @@ function LandingPage() {
       {/* 3. Three Editions Swiss Comparison */}
       <VariantComparisonSection onSelectVariant={scrollToOrder} />
 
-      {/* 4. Lookbook Studio Gallery */}
-      <ProductGallery />
-
-      {/* 5. Studio Checkout Section */}
+      {/* 4. Studio Checkout Section */}
       <OrderSection initialVariantCode={selectedVariantCode} />
 
       {/* Sticky Mobile CTA & Floating WhatsApp Button */}
@@ -58,7 +54,7 @@ function LandingPage() {
 }
 
 const LoadingFallback = () => (
-  <div className="min-h-screen bg-white text-neutral-600 flex items-center justify-center font-['Hind_Siliguri',sans-serif]">
+  <div className="min-h-screen bg-white text-neutral-600 flex items-center justify-center font-bengali">
     <div className="flex items-center gap-3">
       <div className="w-5 h-5 border-2 border-neutral-900 border-t-transparent rounded-full animate-spin" />
       <span className="text-xs font-['Plus_Jakarta_Sans',sans-serif] font-bold tracking-widest uppercase">LOADING...</span>

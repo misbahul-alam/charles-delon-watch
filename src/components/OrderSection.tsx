@@ -217,7 +217,7 @@ export const OrderSection: React.FC<OrderSectionProps> = ({
                 </div>
                 <div className="flex justify-between gap-4">
                   <span className="text-neutral-400 shrink-0">ডেলিভারি ঠিকানা:</span>
-                  <span className="font-bold text-neutral-900 text-right max-w-[240px] break-words">{address}</span>
+                  <span className="font-bold text-neutral-900 text-right max-w-60 wrap-break-word">{address}</span>
                 </div>
                 <div className="flex justify-between pt-3 border-t border-neutral-200 text-sm font-bold text-neutral-900">
                   <span>সর্বমোট প্রদেয় মূল্য:</span>
@@ -281,11 +281,11 @@ export const OrderSection: React.FC<OrderSectionProps> = ({
                     <div className="text-sm font-bold text-neutral-900 truncate">
                       {selectedVariant.nameBangla}
                     </div>
-                    <div className="text-xs text-neutral-400 font-['Plus_Jakarta_Sans',sans-serif]">
-                      {selectedVariant.titleEnglish}
+                    <div className="text-xs text-neutral-500">
+                      {selectedVariant.strapColorBangla}
                     </div>
-                    <div className="text-base font-bold text-neutral-900">
-                      ৳{toBanglaNumber(unitPrice)}
+                    <div className="text-[11px] font-['Plus_Jakarta_Sans',sans-serif] text-neutral-400 font-semibold uppercase tracking-wider">
+                      {selectedVariant.colorNameEnglish} EDITION
                     </div>
                   </div>
                 </div>

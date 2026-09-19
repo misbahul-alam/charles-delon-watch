@@ -55,7 +55,7 @@ export const MobileStickyCTA: React.FC<MobileStickyCTAProps> = ({
 
         <button
           onClick={onOrderClick}
-          className="flex-1 py-3 px-4 rounded-xl bg-neutral-900 hover:bg-neutral-800 text-white font-bold text-sm tracking-wide shadow-sm active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer min-h-[46px]"
+          className="flex-1 py-3 px-4 rounded-xl bg-neutral-900 hover:bg-neutral-800 text-white font-bold text-sm tracking-wide shadow-sm active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer min-h-11.5"
         >
           <ShoppingBag className="w-4 h-4" />
           <span>অর্ডার করুন</span>
