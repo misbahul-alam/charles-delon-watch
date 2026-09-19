@@ -45,7 +45,7 @@ export const MobileStickyCTA: React.FC<MobileStickyCTAProps> = ({
           </span>
           <div className="flex items-baseline gap-1.5">
             <span className="text-xl font-bold text-neutral-900">
-              ৳৮৫০
+              ৳৮৯০
             </span>
             <span className="text-xs text-neutral-400 line-through">
               ৳১,৫৫০

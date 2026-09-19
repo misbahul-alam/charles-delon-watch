@@ -5,46 +5,46 @@ import { imgBlueFeature, imgBlackFeature } from '../images';
 export const ProductBenefits: React.FC = () => {
   const technicalSpecs = [
     {
-      icon: Cpu,
-      category: 'CALIBRE // MOVEMENT',
-      titleBangla: 'প্রেসিশন অ্যানালগ কোয়ার্টজ মুভমেন্ট',
-      specEnglish: 'Precision Quartz Analog // Long-Life Battery',
-      desc: 'সুইস আর্কিটেকচার অনুযায়ী তৈরি অ্যানালগ গিয়ার যা দেয় নিখুঁত সময় ও দীর্ঘস্থায়ী নির্ভরযোগ্য ব্যাটারি লাইফ।',
+      icon: Sparkles,
+      category: 'COLOR-CHANGING DIAL',
+      titleBangla: 'আকর্ষণীয় কালার-চেঞ্জিং গোলাকার ডায়াল',
+      specEnglish: 'Color-Changing Dial • Gradient Effect',
+      desc: 'ঘড়িটিতে রয়েছে চমৎকার গোলাকার ডায়াল, যাতে রয়েছে মাল্টিকালার বা কালার-চেঞ্জিং ও গ্রেডিয়েন্ট ইফেক্ট। আলোর প্রতিফলনে এর ভিন্ন রূপ একে দেয় প্রিমিয়াম ফিল।',
     },
     {
-      icon: Sparkles,
-      category: 'CRYSTAL // GLASS',
-      titleBangla: 'হার্ডেনড মিনারেল প্রিজম গ্লাস',
-      specEnglish: 'Mineral Prism Crystal // Scratch-Resistant',
-      desc: 'দৈনন্দিন ব্যবহারে দাগ ও আঁচড় প্রতিরোধী বিশেষ কোটিং এবং আলোর প্রতিফলনে দৃষ্টিনন্দন গ্রেডিয়েন্ট লুক।',
+      icon: Watch,
+      category: 'ANALOG INDICES',
+      titleBangla: 'স্পষ্ট এনালগ ১ থেকে ১২ মার্কিং',
+      specEnglish: 'Clear Arabic 1–12 Numerals • High Visibility',
+      desc: 'ডায়ালের চারপাশে ১ থেকে ১২ পর্যন্ত সংখ্যাগুলো অত্যন্ত স্পষ্ট করে লেখা রয়েছে, যার ফলে যেকোনো কোণ থেকে এক পলকেই নিখুঁত সময় দেখা যায়।',
+    },
+    {
+      icon: ShieldCheck,
+      category: 'STRAP & MATERIAL',
+      titleBangla: 'প্রিমিয়াম সিলিকন / নরম রাবার স্ট্র্যাপ',
+      specEnglish: 'High-Quality Soft Silicone & Rubber',
+      desc: 'এর স্ট্র্যাপটি তৈরি হয়েছে হাই-কোয়ালিটি সিলিকন বা নরম রাবার দিয়ে, যা হাতে পরতে অত্যন্ত আরামদায়ক, নমনীয় এবং দীর্ঘস্থায়ী।',
+    },
+    {
+      icon: Layers,
+      category: 'UNISEX DESIGN',
+      titleBangla: 'ইউনিক ইউনিসেক্স মডার্ন ডিজাইন',
+      specEnglish: 'Modern Unisex Design (For Him & Her)',
+      desc: 'আধুনিক ডিজাইন ছেলে ও মেয়ে উভয়ের কব্জির সাথেই নিখুঁতভাবে মানানসই। যেকোনো ক্যাজুয়াল বা ট্রেন্ডি আউটফিটের সাথে দারুণ মানিয়ে যায়।',
     },
     {
       icon: Droplets,
       category: 'WATER RESISTANCE',
-      titleBangla: '৩ এটিএম ওয়াটারপ্রুফ আর্কিটেকচার',
-      specEnglish: '3 ATM // 30 Meters Daily Proof',
-      desc: '৩-লেয়ার অভ্যন্তরীণ গ্যাসকেট সিলিং—হাত ধোয়া, ওযু কিংবা আকস্মিক বৃষ্টির পানিতে ১০০% নিশ্চিন্ত ব্যবহার।',
+      titleBangla: 'দৈনন্দিন ওয়াটারপ্রুফ সুবিধা',
+      specEnglish: 'Daily Life Waterproof Protection',
+      desc: 'এটি ওয়াটারপ্রুফ হওয়ায় দৈনন্দিন ব্যবহার, হাত ধোয়া, অজু করা কিংবা সামান্য বৃষ্টির মাঝেও ঘড়িটি নিয়ে থাকবে না কোনো দুশ্চিন্তা।',
     },
     {
-      icon: Layers,
-      category: 'CASE & PROFILE',
-      titleBangla: '৪০ মিমি স্লিম এরগোনোমিক কেসিং',
-      specEnglish: '40mm Diameter // Slim Ergonomic Profile',
-      desc: 'হালকা ও টেকসই গঠন যা কব্জিতে কোনো বাড়তি চাপ বা ভারী ভাব তৈরি করে না, সারাদিন স্বাচ্ছন্দ্য বজায় রাখে।',
-    },
-    {
-      icon: ShieldCheck,
-      category: 'STRAP COMPOSITION',
-      titleBangla: 'হাইপোঅ্যালার্জেনিক আল্ট্রা-সফট সিলিকন',
-      specEnglish: 'Ultra-Soft Hypoallergenic Silicone Strap',
-      desc: 'নরম রাবার উপাদান যা শতভাগ ত্বকবান্ধব এবং নমনীয়, দীর্ঘ ব্যবহারে কোনো দাগ বা ঘাম জমতে দেয় না।',
-    },
-    {
-      icon: Watch,
-      category: 'INDICES & FITMENT',
-      titleBangla: '১-১২ অ্যানালগ মার্কার ও ইউনিসেক্স সাইজ',
-      specEnglish: 'Arabic 1–12 Numerals // For Him & Her',
-      desc: 'সুস্পষ্ট ফন্টে মুদ্রিত মার্কারের কারণে এক পলকেই নিখুঁত সময় দেখা যায়। ছেলে ও মেয়ে উভয়ের কব্জিতে মানানসই।',
+      icon: Cpu,
+      category: 'QUARTZ MOVEMENT',
+      titleBangla: 'প্রেসিশন অ্যানালগ কোয়ার্টজ মুভমেন্ট',
+      specEnglish: 'Precision Quartz Analog & Long-Life Battery',
+      desc: 'উচ্চমানের প্রিসিশন অ্যানালগ গিয়ার ও নির্ভরযোগ্য কোয়ার্টজ মেকানিজম যা দেয় নিখুঁত সময় ও দীর্ঘস্থায়ী নিরবচ্ছিন্ন ব্যাটারি লাইফ।',
     },
   ];
 
@@ -55,13 +55,13 @@ export const ProductBenefits: React.FC = () => {
       <div className="py-14 sm:py-20 max-w-6xl mx-auto px-4 sm:px-6 text-center space-y-3">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-neutral-200 text-neutral-800 text-[11px] font-['Plus_Jakarta_Sans',sans-serif] uppercase tracking-[0.25em] font-bold shadow-2xs">
           <Award className="w-3.5 h-3.5 text-neutral-900" />
-          <span>SWISS HOROLOGY STANDARDS // ARCHITECTURE</span>
+          <span>ORIGINAL DESIGN • 100% WATERPROOF</span>
         </div>
         <h2 className="text-2xl sm:text-4xl lg:text-[42px] font-bold text-neutral-900 tracking-tight leading-tight">
-          প্রযুক্তি ও নান্দনিকতার এক রাজকীয় সংমিশ্রণ
+          স্টাইল, আধুনিকতা এবং আকর্ষণীয় লুকের এক দুর্দান্ত সমন্বয়
         </h2>
         <p className="text-xs sm:text-sm text-neutral-500 max-w-xl mx-auto font-normal">
-          প্রতিটি ডিটেইলে সুইস মিনিমালিজম ও আধুনিক মেটেরিয়ালের অনন্য প্রতিফলন।
+          আলোর প্রতিফলনে মাল্টিকালার প্রিজম ডায়াল, স্কিন-ফ্রেন্ডলি সিলিকন স্ট্র্যাপ ও দীর্ঘস্থায়ী ওয়াটারপ্রুফ বডি।
         </p>
       </div>
 
@@ -86,7 +86,7 @@ export const ProductBenefits: React.FC = () => {
             <div className="lg:col-span-6 order-1 lg:order-2 space-y-6">
               <div className="space-y-2">
                 <div className="text-[11px] font-['Plus_Jakarta_Sans',sans-serif] uppercase tracking-[0.25em] text-neutral-400 font-bold">
-                  FEATURE I // THE PRISM DIAL
+                  FEATURE 01 • THE PRISM DIAL
                 </div>
                 <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-neutral-900 tracking-tight leading-snug">
                   আলোর প্রতিফলন ও দিক পরিবর্তনে ডায়ালের রূপবদল
@@ -133,7 +133,7 @@ export const ProductBenefits: React.FC = () => {
             <div className="lg:col-span-6 space-y-6">
               <div className="space-y-2">
                 <div className="text-[11px] font-['Plus_Jakarta_Sans',sans-serif] uppercase tracking-[0.25em] text-neutral-400 font-bold">
-                  FEATURE II // WATERPROOF & ERGONOMICS
+                  FEATURE 02 • WATERPROOF & ERGONOMICS
                 </div>
                 <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-neutral-900 tracking-tight leading-snug">
                   ১০০% ওয়াটারপ্রুফ বডি ও হাই-গ্রেড সিলিকন স্ট্র্যাপ
@@ -148,9 +148,9 @@ export const ProductBenefits: React.FC = () => {
                 <div className="p-4 rounded-2xl bg-white border border-neutral-200/80 flex items-start gap-3.5 shadow-2xs">
                   <span className="font-['Plus_Jakarta_Sans',sans-serif] text-xs font-bold text-neutral-400 mt-0.5">03</span>
                   <div>
-                    <h4 className="text-xs sm:text-sm font-bold text-neutral-900">৩-লেয়ার ওয়াটার রেসিস্ট্যান্ট সিলিং</h4>
+                    <h4 className="text-xs sm:text-sm font-bold text-neutral-900">দৈনন্দিন ওয়াটারপ্রুফ সুবিধা</h4>
                     <p className="text-[11px] sm:text-xs text-neutral-500 mt-0.5 leading-relaxed">
-                      ঘড়ির ইন্টারনাল কেসিং সম্পূর্ণ পানিরোধী গ্যাসকেট দ্বারা সুরক্ষিত।
+                      হাত ধোয়া, অজু করা কিংবা হঠাৎ বৃষ্টির পানির মাঝেও ঘড়িটি নিয়ে থাকবে না কোনো দুশ্চিন্তা।
                     </p>
                   </div>
                 </div>
@@ -158,9 +158,9 @@ export const ProductBenefits: React.FC = () => {
                 <div className="p-4 rounded-2xl bg-white border border-neutral-200/80 flex items-start gap-3.5 shadow-2xs">
                   <span className="font-['Plus_Jakarta_Sans',sans-serif] text-xs font-bold text-neutral-400 mt-0.5">04</span>
                   <div>
-                    <h4 className="text-xs sm:text-sm font-bold text-neutral-900">হাইপোঅ্যালার্জেনিক আল্ট্রা-সফট সিলিকন</h4>
+                    <h4 className="text-xs sm:text-sm font-bold text-neutral-900">হাই-কোয়ালিটি সিলিকন / নরম রাবার</h4>
                     <p className="text-[11px] sm:text-xs text-neutral-500 mt-0.5 leading-relaxed">
-                      ত্বকের সাথে সংবেদনশীল এবং নমনীয়, দীর্ঘ ব্যবহারে কোনো দাগ বা ঘাম জমতে দেয় না।
+                      নরম রাবার উপাদান যা অত্যন্ত আরামদায়ক ও নমনীয়, সারাদিন হাতে পরে থাকলেও কোনো অস্বস্তি হয় না।
                     </p>
                   </div>
                 </div>
@@ -191,13 +191,13 @@ export const ProductBenefits: React.FC = () => {
           <div className="text-center max-w-2xl mx-auto space-y-2">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100 text-neutral-800 text-[11px] font-['Plus_Jakarta_Sans',sans-serif] uppercase tracking-[0.25em] font-bold">
               <Compass className="w-3.5 h-3.5 text-neutral-900" />
-              <span>HOROLOGY ARCHITECTURE // TECHNICAL MATRIX</span>
+              <span>OFFICIAL PRODUCT SPECIFICATIONS</span>
             </div>
             <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-neutral-900 tracking-tight">
-              সুইস স্ট্যান্ডার্ড প্রযুক্তিগত স্পেসিফিকেশন
+              ঘড়িটির অফিসিয়াল প্রযুক্তিগত স্পেসিফিকেশন
             </h3>
             <p className="text-xs sm:text-sm text-neutral-500 font-normal">
-              স্থায়িত্ব, নিখুঁত সময় ও প্রিমিয়াম ম্যাটেরিয়ালের সর্বোচ্চ মানদণ্ড।
+              দৈনন্দিন ব্যবহার, নিখুঁত সময় ও প্রিমিয়াম ম্যাটেরিয়ালের সর্বোচ্চ মানদণ্ড।
             </p>
           </div>
 
@@ -234,6 +234,60 @@ export const ProductBenefits: React.FC = () => {
                 </div>
               );
             })}
+          </div>
+
+        </div>
+      </div>
+
+      {/* Why Choose This Watch Section (Direct from docs.txt) */}
+      <div className="py-16 sm:py-24 bg-[#fafbfc]">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 space-y-10">
+          
+          <div className="text-center max-w-2xl mx-auto space-y-2">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-neutral-200 text-neutral-800 text-[11px] font-['Plus_Jakarta_Sans',sans-serif] uppercase tracking-[0.25em] font-bold shadow-2xs">
+              <Sparkles className="w-3.5 h-3.5 text-neutral-900" />
+              <span>WHY CHOOSE CHARLES DELON</span>
+            </div>
+            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-neutral-900 tracking-tight">
+              কেন এই ঘড়িটি আপনার সংগ্রহে রাখা উচিত?
+            </h3>
+            <p className="text-xs sm:text-sm text-neutral-500 font-normal">
+              স্টাইলিশ আউটফিট ও দৈনন্দিন ব্যবহারের জন্য এক নিখুঁত টাইমপিস।
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div className="p-6 rounded-3xl bg-white border border-neutral-200/80 shadow-xs space-y-3">
+              <span className="font-['Plus_Jakarta_Sans',sans-serif] text-xs font-bold text-neutral-400">01</span>
+              <h4 className="text-sm font-bold text-neutral-900">ট্রেন্ডি কালার-চেঞ্জিং ডায়াল</h4>
+              <p className="text-xs text-neutral-600 leading-relaxed font-normal">
+                আলোর প্রতিফলনে ভিন্ন ভিন্ন আকর্ষণীয় গ্রেডিয়েন্ট লুক ঘড়িটিকে সাধারণ ঘড়ির চেয়ে আলাদা ও অনন্য করে তুলেছে।
+              </p>
+            </div>
+
+            <div className="p-6 rounded-3xl bg-white border border-neutral-200/80 shadow-xs space-y-3">
+              <span className="font-['Plus_Jakarta_Sans',sans-serif] text-xs font-bold text-neutral-400">02</span>
+              <h4 className="text-sm font-bold text-neutral-900">আরামদায়ক সিলিকন স্ট্র্যাপ</h4>
+              <p className="text-xs text-neutral-600 leading-relaxed font-normal">
+                হাই-কোয়ালিটি নরম সিলিকন বা রাবার স্ট্র্যাপ থাকায় সারাদিন হাতে পরে থাকলেও কোনো অস্বস্তি বোধ হবে না।
+              </p>
+            </div>
+
+            <div className="p-6 rounded-3xl bg-white border border-neutral-200/80 shadow-xs space-y-3">
+              <span className="font-['Plus_Jakarta_Sans',sans-serif] text-xs font-bold text-neutral-400">03</span>
+              <h4 className="text-sm font-bold text-neutral-900">উপহার দেওয়ার চমৎকার চয়েস</h4>
+              <p className="text-xs text-neutral-600 leading-relaxed font-normal">
+                নিজের স্টাইলিশ ব্যবহারের পাশাপাশি এটি প্রিয়জনকে উপহার দেওয়ার জন্যও একটি চমৎকার চয়েস।
+              </p>
+            </div>
+
+            <div className="p-6 rounded-3xl bg-white border border-neutral-200/80 shadow-xs space-y-3">
+              <span className="font-['Plus_Jakarta_Sans',sans-serif] text-xs font-bold text-neutral-400">04</span>
+              <h4 className="text-sm font-bold text-neutral-900">দৈনন্দিন ওয়াটারপ্রুফ সুবিধা</h4>
+              <p className="text-xs text-neutral-600 leading-relaxed font-normal">
+                দৈনন্দিন ব্যবহার, হাত ধোয়া, অজু করা কিংবা সামান্য বৃষ্টির মাঝেও এটি নিয়ে থাকবে না কোনো দুশ্চিন্তা।
+              </p>
+            </div>
           </div>
 
         </div>

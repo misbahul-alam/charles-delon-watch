@@ -29,20 +29,20 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOrderClick }) => {
             {/* Minimal Brand Kicker */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-neutral-100 text-neutral-800 text-xs font-semibold tracking-wider">
               <span className="w-1.5 h-1.5 rounded-full bg-neutral-900" />
-              <span className="font-['Plus_Jakarta_Sans',sans-serif] uppercase tracking-wider text-[11px] font-bold">CHARLES DELON // GENEVA 2026</span>
+              <span className="font-['Plus_Jakarta_Sans',sans-serif] uppercase tracking-wider text-[11px] font-bold">CHARLES DELON • 100% WATERPROOF COLOR-CHANGING WATCH</span>
             </div>
 
             {/* Clean Headline */}
             <div className="space-y-3">
               <h1 className="text-3xl sm:text-4xl lg:text-[44px] font-bold text-neutral-900 tracking-tight leading-[1.2]">
-                আলো ও পানির মেলবন্ধনে — <br />
+                স্টাইল, আধুনিকতা ও আকর্ষণীয় লুক — <br />
                 <span className="text-neutral-900 underline decoration-neutral-300 underline-offset-8">
-                  Charles Delon Watch
+                  Charles Delon Waterproof Color-Changing Watch
                 </span>
               </h1>
 
               <p className="text-sm sm:text-base text-neutral-600 leading-relaxed max-w-xl mx-auto lg:mx-0 font-normal pt-1">
-                হাতের প্রতিটি ভঙ্গিমায় বদলে যায় ডায়ালের অপটিক্যাল গ্রেডিয়েন্ট লুক। ১০০% ওয়াটারপ্রুফ আর্কিটেকচার ও স্কিন-ফ্রেন্ডলি নরম সিলিকন স্ট্র্যাপ সহ নারী ও পুরুষ উভয়ের জন্য মানানসই প্রিমিয়াম ইউনিসেক্স ঘড়ি।
+                পুরুষ ও নারী উভয়ের (Unisex) ব্যবহারের উপযোগী করে তৈরি। আলোর প্রতিফলনে বদলে যায় আকর্ষণীয় কালার-চেঞ্জিং ডায়াল। প্রিমিয়াম সিলিকন স্ট্র্যাপ ও ওয়াটারপ্রুফ সুবিধা সহ যেকোনো ক্যাজুয়াল বা ট্রেন্ডি আউটফিটে নিখুঁত মানানসই।
               </p>
             </div>
 
@@ -82,13 +82,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOrderClick }) => {
             <div className="space-y-4 pt-2 w-full flex flex-col items-center lg:items-start">
               <div className="flex items-baseline justify-center lg:justify-start gap-3">
                 <span className="text-4xl sm:text-5xl font-bold text-neutral-900 tracking-tight">
-                  ৳{toBanglaNumber(850)}
+                  ৳{toBanglaNumber(890)}
                 </span>
                 <span className="text-base sm:text-lg line-through text-neutral-400">
                   ৳{toBanglaNumber(1550)}
                 </span>
                 <span className="text-xs font-bold uppercase tracking-wider text-emerald-800 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded">
-                  ৪৫% ছাড়
+                  ৪৩% ছাড়
                 </span>
               </div>
 
@@ -113,7 +113,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOrderClick }) => {
                 </span>
                 <span className="flex items-center gap-1.5 font-medium">
                   <ShieldCheck className="w-4 h-4 text-neutral-900" />
-                  ৭ দিনের রিপ্লেসমেন্ট
+                  ১০০% অরিজিনাল প্রোডাক্ট
                 </span>
               </div>
             </div>

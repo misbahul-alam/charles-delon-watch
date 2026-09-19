@@ -52,7 +52,7 @@ export const OrderSection: React.FC<OrderSectionProps> = ({
   const selectedVariant: WatchVariant =
     WATCH_VARIANTS.find((v) => v.code === selectedCode) || WATCH_VARIANTS[0];
 
-  const unitPrice = 850;
+  const unitPrice = 890;
   const deliveryCharge = district === "dhaka" ? 70 : 130;
   const subtotal = unitPrice * quantity;
   const totalPrice = subtotal + deliveryCharge;
@@ -84,7 +84,7 @@ export const OrderSection: React.FC<OrderSectionProps> = ({
 
     setIsSubmitting(true);
     const variantDescription = `Code: ${selectedVariant.code} (${selectedVariant.nameBangla})`;
-    const productName = `Charles Delon Waterproof Watch [${selectedVariant.code}]`;
+    const productName = `Charles Delon Waterproof Color-Changing Watch [${selectedVariant.code}]`;
     const fullAddress = customerNote.trim()
       ? `${address.trim()} (নোট: ${customerNote.trim()})`
       : address.trim();
@@ -158,7 +158,7 @@ export const OrderSection: React.FC<OrderSectionProps> = ({
             <div className="text-[11px] uppercase tracking-[0.25em] text-neutral-400 font-semibold flex items-center gap-2">
               <Award className="w-3.5 h-3.5 text-neutral-900" />
               <span className="font-['Plus_Jakarta_Sans',sans-serif]">BOUTIQUE CONCIERGE</span>
-              <span className="text-neutral-300">//</span>
+              <span className="text-neutral-300">•</span>
               <span>অর্ডার ফর্ম</span>
             </div>
             <h2 className="text-2xl sm:text-4xl font-bold text-neutral-900 tracking-tight">
@@ -179,7 +179,7 @@ export const OrderSection: React.FC<OrderSectionProps> = ({
 
             <div className="space-y-1.5">
               <div className="text-[11px] font-['Plus_Jakarta_Sans',sans-serif] font-bold text-neutral-400 uppercase tracking-widest">
-                OFFICIAL RESERVATION SLIP // {orderNumber}
+                OFFICIAL RESERVATION SLIP • #{orderNumber}
               </div>
               <h3 className="text-2xl font-bold text-neutral-900">
                 আপনার অর্ডারটি সফলভাবে গৃহীত হয়েছে
@@ -260,7 +260,7 @@ export const OrderSection: React.FC<OrderSectionProps> = ({
                   <div className="flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-emerald-500" />
                     <span className="text-[10px] font-['Plus_Jakarta_Sans',sans-serif] uppercase tracking-[0.2em] text-neutral-400 font-bold">
-                      VERIFIED AUTHENTIC GENEVA
+                      100% ORIGINAL AUTHENTIC PRODUCT
                     </span>
                   </div>
                   <span className="text-[10px] font-bold text-neutral-900 px-2 py-0.5 rounded bg-neutral-100 border border-neutral-200">
@@ -270,7 +270,7 @@ export const OrderSection: React.FC<OrderSectionProps> = ({
 
                 {/* Selected Timepiece Preview */}
                 <div className="flex gap-4 items-center">
-                  <div className="w-20 h-20 rounded-2xl bg-neutral-50 border border-neutral-200 p-2 shrink-0 flex items-center justify-center shadow-2xs">
+                  <div className="w-20 h-20 rounded-2xl bg-white border border-neutral-200 p-1.5 shrink-0 flex items-center justify-center shadow-2xs">
                     <img
                       src={selectedVariant.primaryImage}
                       alt={selectedVariant.nameBangla}
@@ -358,7 +358,7 @@ export const OrderSection: React.FC<OrderSectionProps> = ({
                     <span>উপহার প্যাকেজে যা যা থাকবে:</span>
                   </div>
                   <div className="text-[11px] text-neutral-500 pl-5 leading-relaxed">
-                    ১ টি অরিজিনাল ঘড়ি • ১ টি প্রিমিয়াম অফিশিয়াল গিফট বক্স • ২টি অতিরিক্ত স্পেয়ার ব্যাটারি
+                    ১টি অরিজিনাল Charles Delon ঘড়ি • ১টি প্রিমিয়াম ওয়াচ বক্স • সেফটি ডেলিভারি প্যাকেজিং
                   </div>
                 </div>
 
@@ -394,7 +394,7 @@ export const OrderSection: React.FC<OrderSectionProps> = ({
                 <div className="space-y-1 pb-4 border-b border-neutral-100">
                   <div className="text-[11px] uppercase tracking-widest text-neutral-400 font-semibold flex items-center gap-2">
                     <span className="font-['Plus_Jakarta_Sans',sans-serif]">CLIENT INFORMATION</span>
-                    <span className="text-neutral-300">//</span>
+                    <span className="text-neutral-300">•</span>
                     <span>কাস্টমার তথ্য</span>
                   </div>
                   <h3 className="text-lg sm:text-xl font-bold text-neutral-900">

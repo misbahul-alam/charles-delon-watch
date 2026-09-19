@@ -40,7 +40,7 @@ function LandingPage() {
       {/* 2. The Story Behind the Dial & Technical Precision */}
       <ProductBenefits />
 
-      {/* 3. Three Editions Swiss Comparison */}
+      {/* 3. Three Editions Comparison */}
       <VariantComparisonSection onSelectVariant={scrollToOrder} />
 
       {/* 4. Studio Checkout Section */}
