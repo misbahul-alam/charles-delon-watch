@@ -243,7 +243,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
   };
 
   return (
-    <div className="min-h-screen bg-slate-900 text-slate-100 font-['Hind_Siliguri',sans-serif] p-4 sm:p-8">
+    <div className="min-h-screen bg-slate-900 text-slate-100 font-bengali p-4 sm:p-8">
       <div className="max-w-7xl mx-auto space-y-6">
         {/* Top Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-slate-800/80 backdrop-blur-md p-6 rounded-2xl border border-slate-700 shadow-xl">
