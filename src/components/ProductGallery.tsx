@@ -1,240 +1,210 @@
 import React, { useState } from 'react';
-import {
-  Sparkles,
-  Maximize2,
-  X,
-  ShoppingBag,
-} from 'lucide-react';
+import { Maximize2, X, Camera } from 'lucide-react';
 import { toBanglaNumber } from '../utils/bengali';
 import {
   WATCH_VARIANTS,
-  img12816_hero,
-  img12816_front,
-  img12816_cushion,
-  img13279_hero,
-  img13279_front,
-  img13279_cushion,
-  img13294_hero,
-  img13295_hero,
+  imgBlueHero,
+  imgBlueFeature,
+  imgBlackHero,
+  imgBlackFeature,
+  imgGreyHero,
+  imgGreyFront,
 } from '../images';
 
-interface GalleryItem {
+interface LookbookItem {
   id: string;
   variantCode: string;
   titleBangla: string;
-  category: '12816' | '13279' | '13294' | '13295';
+  editionName: string;
   src: string;
   caption: string;
+  exhibitNo: string;
 }
 
-const GALLERY_ITEMS: GalleryItem[] = [
+const LOOKBOOK_ITEMS: LookbookItem[] = [
   {
-    id: 'g-12816-1',
-    variantCode: '12816',
-    titleBangla: 'ম্যাট ব্ল্যাক স্টুডিও শট',
-    category: '12816',
-    src: img12816_hero,
-    caption: 'ডার্ক মেটালিক পেডেস্টালে ড্রামাটিক রিফ্লেকশন সহ ম্যাট ব্ল্যাক কেসিং',
+    id: 'lb-1',
+    variantCode: '13297',
+    editionName: 'ROYAL BLUE EDITION',
+    titleBangla: 'রয়্যাল ব্লু — ড্রামাটিক ওয়াটার স্প্ল্যাশ স্টুডিও শট',
+    src: imgBlueHero,
+    caption: 'সিলিকন স্ট্র্যাপ ও অপটিক্যাল গ্রেডিয়েন্ট ডায়াল ইন রিয়েল ওয়াটার স্প্ল্যাশ',
+    exhibitNo: 'EXHIBIT 01',
   },
   {
-    id: 'g-12816-2',
-    variantCode: '12816',
-    titleBangla: 'ম্যাট ব্ল্যাক ফ্রন্ট ভিউ',
-    category: '12816',
-    src: img12816_front,
-    caption: 'স্পষ্ট ডিজিটাল ও অ্যানালগ ডিসপ্লে এবং সাদা স্টিচড লেদার স্ট্র্যাপ',
+    id: 'lb-2',
+    variantCode: '13297',
+    editionName: 'ROYAL BLUE EDITION',
+    titleBangla: 'রয়্যাল ব্লু — ডায়াল আর্কিটেকচার ও ক্রিস্টাল ডিটেইল',
+    src: imgBlueFeature,
+    caption: 'আলোর ভিন্ন কোণে প্রিজম ডায়ালের অনন্য রূপবদল ও নিখুঁত মার্কার',
+    exhibitNo: 'EXHIBIT 02',
   },
   {
-    id: 'g-12816-3',
-    variantCode: '12816',
-    titleBangla: 'লাক্সারি কুশন ডিসপ্লে',
-    category: '12816',
-    src: img12816_cushion,
-    caption: 'হোয়াইট প্রিমিয়াম কুশনে রাখা রয়্যাল ভিন্টেজ ম্যাট ব্ল্যাক',
+    id: 'lb-3',
+    variantCode: '12713',
+    editionName: 'JET BLACK EDITION',
+    titleBangla: 'জেট ব্ল্যাক — ড্রামাটিক ওয়াটার স্প্ল্যাশ শট',
+    src: imgBlackHero,
+    caption: 'ডিপ জেট ব্ল্যাক কেসিং ও ভাইব্রেন্ট কালার চেঞ্জিং প্রিজম রিফ্লেকশন',
+    exhibitNo: 'EXHIBIT 03',
   },
   {
-    id: 'g-13279-1',
-    variantCode: '13279',
-    titleBangla: 'সিলভার স্টিল স্টুডিও শট',
-    category: '13279',
-    src: img13279_hero,
-    caption: 'মেটালিক ফিনিশ সিলভার কেসিং ও ডিপ ব্ল্যাক স্টিচড লেদার স্ট্র্যাপ',
+    id: 'lb-4',
+    variantCode: '12713',
+    editionName: 'JET BLACK EDITION',
+    titleBangla: 'জেট ব্ল্যাক — ওয়াটারপ্রুফ আর্কিটেকচার ভিউ',
+    src: imgBlackFeature,
+    caption: '৩-লেয়ার ওয়াটার সিলিং ও ডিপ ব্ল্যাক প্রিমিয়াম সিলিকন স্ট্র্যাপ',
+    exhibitNo: 'EXHIBIT 04',
   },
   {
-    id: 'g-13279-2',
-    variantCode: '13279',
-    titleBangla: 'সিলভার ফ্রন্ট ডায়াল',
-    category: '13279',
-    src: img13279_front,
-    caption: 'বিশ্ব মানচিত্র এলসিডি ও স্টেইনলেস লুকের নিখুঁত ফিনিশ',
+    id: 'lb-5',
+    variantCode: '13296',
+    editionName: 'NAUTICAL ASH EDITION',
+    titleBangla: 'নান্দনিক অ্যাশ — ড্রপলেট স্টুডিও রিফ্লেকশন',
+    src: imgGreyHero,
+    caption: 'মডার্ন নিউট্রাল অ্যাশ কালার স্ট্র্যাপ ও লাইট প্রিজম ডায়াল',
+    exhibitNo: 'EXHIBIT 05',
   },
   {
-    id: 'g-13279-3',
-    variantCode: '13279',
-    titleBangla: 'সিলভার কুশন ভিউ',
-    category: '13279',
-    src: img13279_cushion,
-    caption: 'উপহার দেওয়ার উপযোগী আকর্ষণীয় ডিসপ্লে লুক',
-  },
-  {
-    id: 'g-13294-1',
-    variantCode: '13294',
-    titleBangla: 'ভিন্টেজ ব্রোঞ্জ ও টান',
-    category: '13294',
-    src: img13294_hero,
-    caption: 'রোজ ব্রোঞ্জ কেসিং ও লাইট ব্রাউন ক্যামেল লেদার স্ট্র্যাপ',
-  },
-  {
-    id: 'g-13295-1',
-    variantCode: '13295',
-    titleBangla: 'অ্যান্টিক কপার ও বাদামি',
-    category: '13295',
-    src: img13295_hero,
-    caption: 'অ্যান্টিক কপার লুক ও ডার্ক টেক্সচার্ড রাস্টিক লেদার স্ট্র্যাপ',
+    id: 'lb-6',
+    variantCode: '13296',
+    editionName: 'NAUTICAL ASH EDITION',
+    titleBangla: 'নান্দনিক অ্যাশ — আর্কিটেকচারাল কাটআউট',
+    src: imgGreyFront,
+    caption: 'নরম সিলিকন ম্যাটেরিয়াল ও দীর্ঘস্থায়ী আরামদায়ক ব্যবহার',
+    exhibitNo: 'EXHIBIT 06',
   },
 ];
 
-interface ProductGalleryProps {
-  onSelectVariantOrder?: (variantCode: string) => void;
-}
-
-export const ProductGallery: React.FC<ProductGalleryProps> = ({
-  onSelectVariantOrder,
-}) => {
+export const ProductGallery: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>('all');
-  const [modalImage, setModalImage] = useState<GalleryItem | null>(null);
+  const [modalImage, setModalImage] = useState<LookbookItem | null>(null);
 
   const filteredItems =
     activeTab === 'all'
-      ? GALLERY_ITEMS
-      : GALLERY_ITEMS.filter((item) => item.category === activeTab);
-
-  const handleOrderVariant = (code: string) => {
-    if (onSelectVariantOrder) {
-      onSelectVariantOrder(code);
-    } else {
-      const el = document.getElementById('order-section');
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+      ? LOOKBOOK_ITEMS
+      : LOOKBOOK_ITEMS.filter((item) => item.variantCode === activeTab);
 
   return (
-    <section
-      id="gallery"
-      className="py-12 sm:py-16 bg-white dark:bg-slate-950 relative overflow-hidden border-t border-slate-200 dark:border-slate-900 scroll-mt-16 transition-colors duration-300"
-    >
-      {/* Ambient Lighting */}
-      <div className="absolute top-1/3 right-1/4 w-72 sm:w-96 h-72 sm:h-96 radial-glow-amber opacity-30 blur-3xl pointer-events-none" />
-
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10 space-y-2">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-500/10 border border-amber-300 dark:border-amber-500/30 text-amber-900 dark:text-amber-300 text-xs font-bold uppercase tracking-wider">
-            <Sparkles className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
-            <span>ফটো গ্যালারি</span>
+    <section id="gallery" className="py-16 sm:py-24 bg-white border-b border-neutral-200">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        
+        {/* Editorial Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 mb-10 border-b border-neutral-200">
+          <div className="space-y-1.5">
+            <div className="text-[11px] uppercase tracking-[0.25em] text-neutral-400 font-semibold flex items-center gap-2">
+              <Camera className="w-3.5 h-3.5 text-neutral-900" />
+              <span className="font-['Plus_Jakarta_Sans',sans-serif]">STUDIO LOOKBOOK</span>
+              <span className="text-neutral-300">//</span>
+              <span>ফটো গ্যালারি</span>
+            </div>
+            <h2 className="text-2xl sm:text-4xl font-bold text-neutral-900 tracking-tight">
+              বাস্তব কোণ ও আলোকছটার স্টুডিও লুকবুক
+            </h2>
           </div>
-          <h2 className="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
-            ক্যাসিও ইলুমিনেটর গ্যালারি 📸
-          </h2>
-          <p className="text-slate-600 dark:text-slate-400 text-xs sm:text-sm leading-relaxed">
-            প্রতিটি অ্যাঙ্গেল থেকে দেখুন প্রিমিয়াম ফিনিশিং ও লেদার স্ট্র্যাপের টেক্সচার।
+          <p className="text-xs sm:text-sm text-neutral-500 max-w-sm font-normal">
+            প্রাকৃতিক আলো ও পানির সান্নিধ্যে ঘড়িটির প্রতিটি কোণের নিখুঁত ফিনিশিং দেখে নিন।
           </p>
         </div>
 
-        {/* Filter Tabs: Horizontal Scroll Strip on Mobile, Wrap on Desktop */}
-        <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar pb-2 sm:pb-0 sm:flex-wrap sm:justify-center mb-6 sm:mb-8">
+        {/* Filter Navigation */}
+        <div className="flex items-center justify-start md:justify-center gap-2.5 overflow-x-auto pb-2 sm:pb-0 mb-8 no-scrollbar">
           <button
             onClick={() => setActiveTab('all')}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all cursor-pointer shrink-0 min-h-[36px] ${
+            className={`px-4 py-2.5 rounded-full text-xs font-bold tracking-wide transition-all cursor-pointer whitespace-nowrap ${
               activeTab === 'all'
-                ? 'bg-amber-500 text-slate-950 shadow-xs font-black'
-                : 'bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-800'
+                ? 'bg-neutral-900 text-white shadow-xs'
+                : 'bg-neutral-50 text-neutral-600 border border-neutral-200 hover:border-neutral-300'
             }`}
           >
-            সব মডেল ({toBanglaNumber(GALLERY_ITEMS.length)})
+            সবগুলো ছবি ({toBanglaNumber(LOOKBOOK_ITEMS.length)})
           </button>
           {WATCH_VARIANTS.map((v) => (
             <button
               key={v.code}
               onClick={() => setActiveTab(v.code)}
-              className={`px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all cursor-pointer shrink-0 min-h-[36px] ${
+              className={`px-4 py-2.5 rounded-full text-xs font-bold tracking-wide transition-all cursor-pointer whitespace-nowrap flex items-center gap-2 ${
                 activeTab === v.code
-                  ? 'bg-amber-500 text-slate-950 shadow-xs font-black'
-                  : 'bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-800'
+                  ? 'bg-neutral-900 text-white shadow-xs'
+                  : 'bg-neutral-50 text-neutral-600 border border-neutral-200 hover:border-neutral-300'
               }`}
             >
-              কোড {toBanglaNumber(v.code)}
+              <span
+                className="w-2.5 h-2.5 rounded-full border border-neutral-300"
+                style={{ backgroundColor: v.colorHex }}
+              />
+              <span>{v.nameBangla} [কোড {toBanglaNumber(v.code)}]</span>
             </button>
           ))}
         </div>
 
-        {/* Gallery Grid: 2-Columns on Mobile, 4-Columns on Desktop */}
-        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-5">
+        {/* Museum-Grade Lookbook Exhibition Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {filteredItems.map((item) => (
             <div
               key={item.id}
-              className="bg-slate-50 dark:bg-slate-900/90 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-amber-400 dark:hover:border-amber-500/40 p-2 sm:p-3 transition-all duration-200 shadow-xs flex flex-col justify-between"
+              className="group bg-white rounded-3xl border border-neutral-200/80 hover:border-neutral-900 transition-all duration-300 overflow-hidden flex flex-col justify-between shadow-xs hover:shadow-md"
             >
-              <div className="relative aspect-square rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 flex items-center justify-center">
+              {/* Photo Canvas - Aspect Square Uncropped */}
+              <div className="relative aspect-square bg-neutral-50/70 flex items-center justify-center overflow-hidden">
                 <img
                   src={item.src}
                   alt={item.titleBangla}
-                  className="w-full h-full object-contain"
+                  className={`w-full h-full transition-transform duration-500 group-hover:scale-103 ${
+                    item.src.includes('front') ? 'object-contain p-4 sm:p-6' : 'object-contain'
+                  }`}
                   loading="lazy"
                 />
 
-                {/* Variant Code Badge */}
-                <div className="absolute top-1.5 left-1.5 px-2 py-0.5 rounded-md bg-white/95 dark:bg-slate-950/90 text-amber-800 dark:text-amber-300 text-[10px] font-mono font-bold shadow-xs">
-                  {item.variantCode}
+                {/* Exhibit Code Badge */}
+                <div className="absolute top-4 left-4 px-2.5 py-1 rounded-full bg-neutral-900/80 backdrop-blur-xs text-[10px] font-['Plus_Jakarta_Sans',sans-serif] font-bold text-white tracking-wider">
+                  {item.exhibitNo}
                 </div>
 
-                {/* Zoom Preview Button */}
+                {/* Zoom Preview Action Button */}
                 <button
                   onClick={() => setModalImage(item)}
-                  className="absolute bottom-1.5 right-1.5 p-1.5 rounded-lg bg-white/95 dark:bg-slate-950/90 text-slate-700 dark:text-slate-200 shadow-xs cursor-pointer active:scale-90"
+                  className="absolute bottom-4 right-4 p-2.5 rounded-full bg-white/95 text-neutral-900 shadow-md hover:bg-neutral-900 hover:text-white transition-all cursor-pointer group-hover:scale-105"
                   aria-label="Zoom photo"
                 >
-                  <Maximize2 className="w-3.5 h-3.5" />
+                  <Maximize2 className="w-4 h-4" />
                 </button>
               </div>
 
-              {/* Title, Price & Order Action */}
-              <div className="pt-2 sm:pt-3 space-y-1.5">
-                <div className="text-xs font-bold text-slate-900 dark:text-white truncate">
+              {/* Museum Plaque Description */}
+              <div className="p-5 sm:p-6 space-y-1.5 bg-white border-t border-neutral-200/60">
+                <div className="flex items-center justify-between text-xs text-neutral-500 font-medium">
+                  <span className="font-['Plus_Jakarta_Sans',sans-serif] text-[10px] uppercase tracking-widest text-neutral-400 font-semibold">{item.editionName}</span>
+                  <span className="font-bold text-neutral-700">কোড: {toBanglaNumber(item.variantCode)}</span>
+                </div>
+                <h3 className="text-sm sm:text-base font-bold text-neutral-900 leading-snug">
                   {item.titleBangla}
-                </div>
-
-                <div className="flex items-center justify-between pt-1 border-t border-slate-200 dark:border-slate-800">
-                  <span className="text-xs font-black text-amber-600 dark:text-amber-400 font-mono">
-                    ৳৯৯০
-                  </span>
-                  <button
-                    onClick={() => handleOrderVariant(item.variantCode)}
-                    className="px-2.5 py-1 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 text-[11px] font-bold flex items-center gap-1 cursor-pointer active:scale-95 shadow-xs"
-                  >
-                    <ShoppingBag className="w-3 h-3" />
-                    <span>অর্ডার</span>
-                  </button>
-                </div>
+                </h3>
+                <p className="text-xs text-neutral-500 leading-relaxed font-normal pt-0.5">
+                  {item.caption}
+                </p>
               </div>
             </div>
           ))}
         </div>
+
       </div>
 
       {/* Lightbox Modal */}
       {modalImage && (
-        <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-4 animate-in fade-in duration-200">
-          <div className="relative max-w-xl w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl sm:rounded-3xl p-4 sm:p-5 shadow-2xl space-y-3">
+        <div className="fixed inset-0 z-50 bg-neutral-950/80 backdrop-blur-xs flex items-center justify-center p-4">
+          <div className="relative max-w-2xl w-full bg-white border border-neutral-200 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-5">
             <button
               onClick={() => setModalImage(null)}
-              className="absolute top-3 right-3 p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 z-10 cursor-pointer active:scale-90"
+              className="absolute top-5 right-5 p-2 rounded-full bg-neutral-100 hover:bg-neutral-200 text-neutral-700 cursor-pointer active:scale-90 transition-all"
               aria-label="Close"
             >
               <X className="w-5 h-5" />
             </button>
 
-            <div className="relative aspect-square max-h-[65vh] rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-950 flex items-center justify-center p-2">
+            <div className="relative aspect-4/3 max-h-[65vh] rounded-2xl overflow-hidden bg-neutral-50 border border-neutral-100 flex items-center justify-center">
               <img
                 src={modalImage.src}
                 alt={modalImage.titleBangla}
@@ -242,27 +212,17 @@ export const ProductGallery: React.FC<ProductGalleryProps> = ({
               />
             </div>
 
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-1">
-              <div>
-                <span className="text-[11px] font-mono text-amber-600 dark:text-amber-400 font-bold block">
-                  কোড: {toBanglaNumber(modalImage.variantCode)}
-                </span>
-                <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white">
-                  {modalImage.titleBangla}
-                </h3>
+            <div className="space-y-2">
+              <div className="flex items-center justify-between text-xs text-neutral-500">
+                <span className="font-['Plus_Jakarta_Sans',sans-serif] text-[10px] uppercase tracking-widest text-neutral-400 font-semibold">{modalImage.editionName}</span>
+                <span className="font-bold text-neutral-700">মডেল কোড: {toBanglaNumber(modalImage.variantCode)}</span>
               </div>
-
-              <button
-                onClick={() => {
-                  const code = modalImage.variantCode;
-                  setModalImage(null);
-                  handleOrderVariant(code);
-                }}
-                className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-500 text-slate-950 font-black text-xs uppercase tracking-wider shadow-md flex items-center justify-center gap-1.5 cursor-pointer"
-              >
-                <ShoppingBag className="w-4 h-4 text-slate-950" />
-                <span>এই ঘড়িটি অর্ডার করুন (৳৯৯০)</span>
-              </button>
+              <h3 className="text-lg font-bold text-neutral-900">
+                {modalImage.titleBangla}
+              </h3>
+              <p className="text-xs text-neutral-600 leading-relaxed">
+                {modalImage.caption}
+              </p>
             </div>
           </div>
         </div>

@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from "react";
 import {
   ShieldCheck,
-  Truck,
-  Sparkles,
-  User,
-  Phone,
-  MapPin,
-  PackageCheck,
-  CheckCircle2,
-  AlertCircle,
   Plus,
   Minus,
-  Gift,
+  CheckCircle2,
+  AlertCircle,
+  ArrowRight,
+  Package,
+  Award,
+  Check,
 } from "lucide-react";
 import { WATCH_VARIANTS, type WatchVariant } from "../images";
 import { supabase } from "../lib/superbase";
@@ -55,7 +52,7 @@ export const OrderSection: React.FC<OrderSectionProps> = ({
   const selectedVariant: WatchVariant =
     WATCH_VARIANTS.find((v) => v.code === selectedCode) || WATCH_VARIANTS[0];
 
-  const unitPrice = 990;
+  const unitPrice = 850;
   const deliveryCharge = district === "dhaka" ? 70 : 130;
   const subtotal = unitPrice * quantity;
   const totalPrice = subtotal + deliveryCharge;
@@ -73,27 +70,25 @@ export const OrderSection: React.FC<OrderSectionProps> = ({
     setErrorMessage("");
 
     if (!name.trim()) {
-      setErrorMessage("দয়া করে আপনার পূর্ণ নাম লিখুন।");
+      setErrorMessage("অনুগ্রহ করে আপনার পূর্ণ নাম লিখুন।");
       return;
     }
     if (!phone.trim() || phone.trim().length < 11) {
-      setErrorMessage(
-        "দয়া করে সঠিক ১১ ডিজিটের মোবাইল নম্বর দিন (যেমন: 017XXXXXXXX)।"
-      );
+      setErrorMessage("সঠিক ১১ ডিজিটের মোবাইল নম্বর প্রদান করুন (যেমন: 01712345678)।");
       return;
     }
-    if (!address.trim()) {
-      setErrorMessage("দয়া করে আপনার পূর্ণ ডেলিভারি ঠিকানা লিখুন।");
+    if (!address.trim() || address.trim().length < 5) {
+      setErrorMessage("পূর্ণ ডেলিভারি ঠিকানা লিখুন (বাসা নং, রোড নং, থানা, জেলা)।");
       return;
     }
 
     setIsSubmitting(true);
     const variantDescription = `Code: ${selectedVariant.code} (${selectedVariant.nameBangla})`;
-    const productName = `CASIO ILLUMINATOR LEATHER STRAP [${selectedVariant.code}]`;
+    const productName = `Charles Delon Waterproof Watch [${selectedVariant.code}]`;
     const fullAddress = customerNote.trim()
       ? `${address.trim()} (নোট: ${customerNote.trim()})`
       : address.trim();
-    const generatedOrderNo = `ORD-${Date.now().toString().slice(-6)}`;
+    const generatedOrderNo = `CD-${Date.now().toString().slice(-6)}`;
     setOrderNumber(generatedOrderNo);
 
     try {
@@ -116,7 +111,7 @@ export const OrderSection: React.FC<OrderSectionProps> = ({
         console.error("Supabase Order Insert Error:", error);
       }
     } catch (err: any) {
-      console.error("Order submission catch error:", err);
+      console.error("Order submission error:", err);
     }
 
     // Trigger Meta Pixel Purchase Event
@@ -126,15 +121,14 @@ export const OrderSection: React.FC<OrderSectionProps> = ({
         currency: "BDT",
         content_name: productName,
         content_type: "product",
-        content_ids: [`casio-${selectedVariant.code}`],
+        content_ids: [`cd-${selectedVariant.code}`],
         contents: [
           {
-            id: `casio-${selectedVariant.code}`,
-            quantity,
+            id: `cd-${selectedVariant.code}`,
+            quantity: quantity,
             item_price: unitPrice,
           },
         ],
-        num_items: quantity,
       });
     }
 
@@ -142,429 +136,391 @@ export const OrderSection: React.FC<OrderSectionProps> = ({
     setOrderSubmitted(true);
   };
 
-  const handleReset = () => {
+  const handleResetForm = () => {
     setName("");
     setPhone("");
     setAddress("");
     setCustomerNote("");
+    setQuantity(1);
     setOrderSubmitted(false);
   };
 
   return (
     <section
       id="order-section"
-      className="py-12 sm:py-16 relative bg-slate-100/80 dark:bg-gradient-to-b dark:from-[#070b12] dark:via-slate-950 dark:to-[#070b12] scroll-mt-12 text-slate-900 dark:text-white transition-colors duration-300"
+      className="py-16 sm:py-24 bg-[#fafbfc] border-b border-neutral-200 scroll-mt-12 text-neutral-900"
     >
-      {/* Background Lighting */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[350px] sm:w-[600px] h-[350px] sm:h-[500px] radial-glow-amber opacity-35 blur-3xl pointer-events-none" />
-
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12 space-y-2">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-500/10 border border-amber-300 dark:border-amber-500/30 text-amber-900 dark:text-amber-300 text-xs font-bold uppercase tracking-wider">
-            <Sparkles className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
-            <span>অর্ডার করুন সহজেই</span>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        
+        {/* Luxury Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 mb-10 border-b border-neutral-200">
+          <div className="space-y-1.5">
+            <div className="text-[11px] uppercase tracking-[0.25em] text-neutral-400 font-semibold flex items-center gap-2">
+              <Award className="w-3.5 h-3.5 text-neutral-900" />
+              <span className="font-['Plus_Jakarta_Sans',sans-serif]">BOUTIQUE CONCIERGE</span>
+              <span className="text-neutral-300">//</span>
+              <span>অর্ডার ফর্ম</span>
+            </div>
+            <h2 className="text-2xl sm:text-4xl font-bold text-neutral-900 tracking-tight">
+              অর্ডার রিজার্ভেশন সম্পন্ন করুন
+            </h2>
           </div>
-          <h2 className="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white">
-            অর্ডার করতে নিচের ফর্মটি পূরণ করুন 📦
-          </h2>
-          <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-base">
-            ক্যাশ অন ডেলিভারি — পণ্য হাতে পেয়ে চেক করে মূল্য পরিশোধ করার ১০০% নিশ্চয়তা!
+          <p className="text-xs sm:text-sm text-neutral-500 max-w-sm font-normal">
+            কোনো অগ্রিম পেমেন্টের প্রয়োজন নেই। পার্সেল খুলে যাচাই করে মূল্য পরিশোধ করবেন।
           </p>
-
-          {/* Offer & Free Gift Highlights */}
-          <div className="pt-2 flex flex-wrap items-center justify-center gap-2 text-[11px] sm:text-xs font-bold">
-            <span className="px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-500/20 border border-amber-300 dark:border-amber-500/40 text-amber-900 dark:text-amber-300 flex items-center gap-1">
-              <Gift className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
-              <span>প্যাকেজে ১টি বক্স + ২টি ব্যাটারি ফ্রি!</span>
-            </span>
-            <span className="px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-500/20 border border-emerald-300 dark:border-emerald-500/40 text-emerald-900 dark:text-emerald-300 flex items-center gap-1">
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
-              <span>অফার মূল্য ৳৯৯০</span>
-            </span>
-          </div>
         </div>
 
         {orderSubmitted ? (
-          /* Order Confirmation View */
-          <div className="max-w-xl mx-auto bg-white dark:bg-slate-900/95 border border-emerald-400 dark:border-emerald-500/40 rounded-2xl sm:rounded-3xl p-5 sm:p-8 shadow-2xl backdrop-blur-xl text-center space-y-5 animate-in zoom-in-95 duration-200">
-            <div className="w-16 h-16 bg-emerald-100 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/30 rounded-full flex items-center justify-center mx-auto shadow-inner">
-              <CheckCircle2 className="w-8 h-8" />
+          /* Luxury Boutique Receipt Card */
+          <div className="max-w-xl mx-auto bg-white border border-neutral-200 rounded-3xl p-8 sm:p-10 shadow-xl text-center space-y-6">
+            <div className="w-16 h-16 bg-neutral-900 text-white rounded-full flex items-center justify-center mx-auto shadow-md">
+              <CheckCircle2 className="w-8 h-8 stroke-[2.5]" />
             </div>
 
             <div className="space-y-1.5">
-              <span className="text-[11px] font-mono font-bold text-amber-700 dark:text-amber-400 px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-500/10 border border-amber-300 dark:border-amber-500/20 inline-block">
-                অর্ডার নম্বর: {toBanglaNumber(orderNumber)}
-              </span>
-              <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">
-                অভিনন্দন! আপনার অর্ডারটি সফল হয়েছে 🎉
+              <div className="text-[11px] font-['Plus_Jakarta_Sans',sans-serif] font-bold text-neutral-400 uppercase tracking-widest">
+                OFFICIAL RESERVATION SLIP // {orderNumber}
+              </div>
+              <h3 className="text-2xl font-bold text-neutral-900">
+                আপনার অর্ডারটি সফলভাবে গৃহীত হয়েছে
               </h3>
-              <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-sm">
-                আমাদের প্রতিনিধি শীঘ্রই আপনার সাথে কল করে অর্ডারটি কনফার্ম করবেন।
+              <p className="text-neutral-500 text-xs sm:text-sm leading-relaxed max-w-md mx-auto">
+                আমাদের প্রতিনিধি অতি শীঘ্রই আপনার সাথে কল করে অর্ডারটি নিশ্চিত করবেন।
               </p>
             </div>
 
-            {/* Order Details Receipt */}
-            <div className="bg-slate-50 dark:bg-slate-950/80 rounded-xl p-4 border border-slate-200 dark:border-slate-800 text-left space-y-2.5">
-              <div className="flex items-center gap-3 pb-2.5 border-b border-slate-200 dark:border-slate-800">
+            <div className="bg-neutral-50/80 rounded-2xl p-6 border border-neutral-200 text-left space-y-4 text-xs">
+              <div className="flex items-center gap-4 pb-4 border-b border-neutral-200">
                 <img
                   src={selectedVariant.primaryImage}
                   alt={selectedVariant.nameBangla}
-                  className="w-12 h-12 rounded-lg object-contain bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-1 shrink-0"
+                  className="w-16 h-16 rounded-xl object-contain bg-white border border-neutral-200 p-1.5 shrink-0 shadow-2xs"
                 />
                 <div>
-                  <div className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">
-                    CASIO ILLUMINATOR [কোড {toBanglaNumber(selectedVariant.code)}]
+                  <div className="font-bold text-neutral-900 text-sm">
+                    Charles Delon Watch [কোড {toBanglaNumber(selectedVariant.code)}]
                   </div>
-                  <div className="text-xs text-amber-700 dark:text-amber-400 font-semibold">
-                    {selectedVariant.nameBangla} • {toBanglaNumber(quantity)} টি
+                  <div className="text-neutral-500 font-medium mt-0.5">
+                    {selectedVariant.nameBangla} • পরিমাণ: {toBanglaNumber(quantity)} টি
                   </div>
                 </div>
               </div>
 
-              <div className="space-y-1 text-xs text-slate-600 dark:text-slate-300">
+              <div className="space-y-2 text-neutral-600 font-medium">
                 <div className="flex justify-between">
-                  <span className="text-slate-500 dark:text-slate-400">নাম:</span>
-                  <span className="font-semibold text-slate-900 dark:text-white">{name}</span>
+                  <span className="text-neutral-400">গ্রাহকের নাম:</span>
+                  <span className="font-bold text-neutral-900">{name}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-slate-500 dark:text-slate-400">ফোন:</span>
-                  <span className="font-semibold text-slate-900 dark:text-white font-mono">{phone}</span>
+                  <span className="text-neutral-400">মোবাইল নম্বর:</span>
+                  <span className="font-bold text-neutral-900 font-['Plus_Jakarta_Sans',sans-serif]">{phone}</span>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-slate-500 dark:text-slate-400">ঠিকানা:</span>
-                  <span className="font-semibold text-slate-900 dark:text-white text-right max-w-[200px] truncate">{address}</span>
+                <div className="flex justify-between gap-4">
+                  <span className="text-neutral-400 shrink-0">ডেলিভারি ঠিকানা:</span>
+                  <span className="font-bold text-neutral-900 text-right max-w-[240px] break-words">{address}</span>
                 </div>
-                <div className="flex justify-between pt-2 border-t border-slate-200 dark:border-slate-800 text-sm font-bold">
-                  <span className="text-slate-900 dark:text-white">সর্বমোট মূল্য:</span>
-                  <span className="text-amber-600 dark:text-amber-400 font-mono text-base">৳{toBanglaNumber(totalPrice)}</span>
+                <div className="flex justify-between pt-3 border-t border-neutral-200 text-sm font-bold text-neutral-900">
+                  <span>সর্বমোট প্রদেয় মূল্য:</span>
+                  <span className="text-base font-bold text-neutral-900">৳{toBanglaNumber(totalPrice)}</span>
                 </div>
               </div>
             </div>
 
-            {/* CTAs */}
-            <div className="pt-1 flex flex-col sm:flex-row gap-2.5">
+            <div className="pt-2 flex flex-col sm:flex-row gap-3">
               <a
                 href={`https://wa.me/8801753481548?text=${encodeURIComponent(
-                  `হ্যালো, আমি ক্যাসিও ইলুমিনেটর ওয়াচ (কোড: ${selectedVariant.code}) অর্ডার করেছি। অর্ডার নং: ${orderNumber}`
+                  `হ্যালো, আমি চার্লস ডেলন ওয়াচ (কোড: ${selectedVariant.code}) অর্ডার করেছি। অর্ডার নং: ${orderNumber}`
                 )}`}
                 target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:flex-1 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm shadow-md flex items-center justify-center gap-2 cursor-pointer min-h-[44px]"
+                rel="noreferrer"
+                className="flex-1 py-3 px-5 rounded-xl bg-neutral-900 hover:bg-neutral-800 text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all cursor-pointer"
               >
-                <WhatsAppIcon className="w-4 h-4 text-white" />
-                <span>হোয়াটসঅ্যাপে দ্রুত কনফার্ম করুন</span>
+                <WhatsAppIcon className="w-4 h-4 fill-white" />
+                <span>হোয়াটসঅ্যাপে আপডেট নিন</span>
               </a>
-
               <button
-                onClick={handleReset}
-                className="w-full sm:w-auto px-5 py-3 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold text-xs cursor-pointer min-h-[44px]"
+                onClick={handleResetForm}
+                className="py-3 px-5 rounded-xl border border-neutral-200 bg-white hover:bg-neutral-50 text-neutral-800 font-bold text-xs uppercase tracking-wider transition-all cursor-pointer"
               >
-                আরেকটি অর্ডার করুন
+                নতুন অর্ডার করুন
               </button>
             </div>
           </div>
         ) : (
-          /* Form Card */
-          <div className="w-full mx-auto bg-white dark:bg-slate-900/90 p-4 sm:p-8 rounded-2xl sm:rounded-3xl border border-slate-200 dark:border-amber-500/25 shadow-lg backdrop-blur-xl">
-            <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
-              {/* Step 1: Select Watch Variant (2x2 Grid on mobile, 4-cols on desktop) */}
-              <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                    <span className="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-amber-500 text-slate-950 flex items-center justify-center font-black text-xs">
-                      ১
+          /* 2-Column Luxury Boutique Concierge Grid */
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+            
+            {/* Left Column: Boutique Order Slip */}
+            <div className="lg:col-span-5 space-y-6">
+              
+              <div className="bg-white rounded-3xl border border-neutral-200 p-6 sm:p-8 shadow-sm space-y-6">
+                
+                {/* Authenticity Certificate Seal */}
+                <div className="flex items-center justify-between pb-4 border-b border-neutral-100">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                    <span className="text-[10px] font-['Plus_Jakarta_Sans',sans-serif] uppercase tracking-[0.2em] text-neutral-400 font-bold">
+                      VERIFIED AUTHENTIC GENEVA
                     </span>
-                    <span>ঘড়ির মডেল সিলেক্ট করুন:</span>
-                  </h3>
-                  <span className="text-xs text-amber-600 dark:text-amber-400 font-mono font-bold">
+                  </div>
+                  <span className="text-[10px] font-bold text-neutral-900 px-2 py-0.5 rounded bg-neutral-100 border border-neutral-200">
                     কোড: {toBanglaNumber(selectedVariant.code)}
                   </span>
                 </div>
 
-                <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3">
-                  {WATCH_VARIANTS.map((variant) => {
-                    const isSelected = selectedCode === variant.code;
-                    return (
-                      <div
-                        key={variant.code}
-                        onClick={() => setSelectedCode(variant.code)}
-                        className={`cursor-pointer rounded-xl sm:rounded-2xl p-2.5 sm:p-3.5 border transition-all duration-200 relative flex flex-col justify-between active:scale-98 ${
-                          isSelected
-                            ? "bg-amber-50/90 dark:bg-amber-500/15 border-amber-500 dark:border-amber-400 ring-1 sm:ring-2 ring-amber-400 shadow-xs"
-                            : "bg-slate-50 dark:bg-slate-950/70 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700"
-                        }`}
-                      >
-                        <div className="space-y-1.5">
-                          <div className="relative aspect-square rounded-lg sm:rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center p-1">
-                            <img
-                              src={variant.primaryImage}
-                              alt={variant.nameBangla}
-                              className="w-full h-full object-contain"
-                            />
-                            <div className="absolute top-1 left-1 px-1.5 py-0.5 rounded bg-white/90 dark:bg-slate-950/90 text-amber-800 dark:text-amber-300 text-[9px] sm:text-[10px] font-mono font-bold border border-slate-200 dark:border-slate-700">
-                              {toBanglaNumber(variant.code)}
-                            </div>
-                            {isSelected && (
-                              <div className="absolute top-1 right-1 w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-amber-500 dark:bg-amber-400 flex items-center justify-center text-slate-950">
-                                <CheckCircle2 className="w-3 h-3 sm:w-4 sm:h-4" />
-                              </div>
-                            )}
-                          </div>
+                {/* Selected Timepiece Preview */}
+                <div className="flex gap-4 items-center">
+                  <div className="w-20 h-20 rounded-2xl bg-neutral-50 border border-neutral-200 p-2 shrink-0 flex items-center justify-center shadow-2xs">
+                    <img
+                      src={selectedVariant.primaryImage}
+                      alt={selectedVariant.nameBangla}
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                  <div className="min-w-0 flex-1 space-y-1">
+                    <div className="text-sm font-bold text-neutral-900 truncate">
+                      {selectedVariant.nameBangla}
+                    </div>
+                    <div className="text-xs text-neutral-400 font-['Plus_Jakarta_Sans',sans-serif]">
+                      {selectedVariant.titleEnglish}
+                    </div>
+                    <div className="text-base font-bold text-neutral-900">
+                      ৳{toBanglaNumber(unitPrice)}
+                    </div>
+                  </div>
+                </div>
 
-                          <div>
-                            <div className="text-[11px] sm:text-xs font-bold text-slate-900 dark:text-white truncate">
-                              {variant.nameBangla}
-                            </div>
-                            <div className="text-[10px] text-slate-500 dark:text-slate-400 truncate">
-                              {variant.strapColorBangla}
-                            </div>
+                {/* Boutique Color Switcher Tabs */}
+                <div className="space-y-2 pt-2 border-t border-neutral-100">
+                  <div className="text-[11px] text-neutral-500 uppercase tracking-wider font-semibold">
+                    মডেল ও কালার পরিবর্তন:
+                  </div>
+                  <div className="grid grid-cols-3 gap-2">
+                    {WATCH_VARIANTS.map((v) => {
+                      const isSelected = selectedCode === v.code;
+                      return (
+                        <button
+                          key={v.code}
+                          type="button"
+                          onClick={() => setSelectedCode(v.code)}
+                          className={`p-2.5 rounded-xl border text-center transition-all cursor-pointer flex flex-col items-center justify-center gap-1 ${
+                            isSelected
+                              ? 'bg-neutral-900 text-white border-neutral-900 shadow-sm'
+                              : 'bg-neutral-50 text-neutral-700 border-neutral-200 hover:border-neutral-300'
+                          }`}
+                        >
+                          <span
+                            className="w-2.5 h-2.5 rounded-full border border-white/20"
+                            style={{ backgroundColor: v.colorHex }}
+                          />
+                          <div className="text-[11px] font-bold truncate w-full">{v.nameBangla}</div>
+                          <div className={`text-[10px] font-semibold ${isSelected ? 'text-neutral-300' : 'text-neutral-400'}`}>
+                            {toBanglaNumber(v.code)}
                           </div>
-                        </div>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
 
-                        <div className="mt-2 pt-1.5 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
-                          <span className="text-xs font-black text-amber-600 dark:text-amber-400 font-mono">
-                            ৳৯৯০
-                          </span>
-                          <span className="text-[9px] text-emerald-700 dark:text-emerald-400 font-bold bg-emerald-100 dark:bg-emerald-500/10 px-1 py-0.5 rounded">
-                            ইন-স্টক
-                          </span>
-                        </div>
-                      </div>
-                    );
-                  })}
+                {/* Quantity Changer */}
+                <div className="flex items-center justify-between pt-3 border-t border-neutral-100">
+                  <span className="text-xs font-bold text-neutral-700">
+                    পরিমাণ:
+                  </span>
+                  <div className="flex items-center border border-neutral-200 rounded-xl overflow-hidden bg-neutral-50">
+                    <button
+                      type="button"
+                      onClick={() => handleQuantityChange("dec")}
+                      className="w-8 h-8 flex items-center justify-center hover:bg-neutral-200 text-neutral-700 transition-colors cursor-pointer"
+                      aria-label="Decrease"
+                    >
+                      <Minus className="w-3.5 h-3.5" />
+                    </button>
+                    <span className="w-8 text-center text-xs font-bold text-neutral-900">
+                      {toBanglaNumber(quantity)}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => handleQuantityChange("inc")}
+                      className="w-8 h-8 flex items-center justify-center hover:bg-neutral-200 text-neutral-700 transition-colors cursor-pointer"
+                      aria-label="Increase"
+                    >
+                      <Plus className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                </div>
+
+                {/* Package Presentation Inclusions */}
+                <div className="p-4 rounded-2xl bg-neutral-50 border border-neutral-200/80 text-xs text-neutral-700 space-y-1.5">
+                  <div className="font-bold text-neutral-900 flex items-center gap-1.5 uppercase tracking-wide text-[11px]">
+                    <Package className="w-3.5 h-3.5 text-neutral-900" />
+                    <span>উপহার প্যাকেজে যা যা থাকবে:</span>
+                  </div>
+                  <div className="text-[11px] text-neutral-500 pl-5 leading-relaxed">
+                    ১ টি অরিজিনাল ঘড়ি • ১ টি প্রিমিয়াম অফিশিয়াল গিফট বক্স • ২টি অতিরিক্ত স্পেয়ার ব্যাটারি
+                  </div>
+                </div>
+
+                {/* Invoice Price Sheet */}
+                <div className="space-y-2.5 pt-3 border-t border-neutral-100 text-xs font-medium">
+                  <div className="flex justify-between text-neutral-500">
+                    <span>পণ্যের মূল্য ({toBanglaNumber(quantity)}টি)</span>
+                    <span className="font-bold text-neutral-900">৳{toBanglaNumber(subtotal)}</span>
+                  </div>
+                  <div className="flex justify-between text-neutral-500">
+                    <span>ডেলিভারি চার্জ</span>
+                    <span className="font-bold text-neutral-900">৳{toBanglaNumber(deliveryCharge)}</span>
+                  </div>
+                  <div className="flex justify-between pt-3 border-t border-neutral-200 text-sm font-bold text-neutral-900">
+                    <span>সর্বমোট প্রদেয় বিল</span>
+                    <span className="text-base font-bold text-neutral-900">৳{toBanglaNumber(totalPrice)}</span>
+                  </div>
                 </div>
               </div>
 
-              {/* Step 2: Customer Delivery Details & Pricing */}
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 pt-4 border-t border-slate-200 dark:border-slate-800">
-                {/* Inputs */}
-                <div className="lg:col-span-7 space-y-3.5 sm:space-y-4">
-                  <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                    <span className="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-amber-500 text-slate-950 flex items-center justify-center font-black text-xs">
-                      ২
-                    </span>
-                    <span>আপনার ডেলিভারি ঠিকানা দিন:</span>
+              {/* Cash On Delivery Assurance */}
+              <div className="bg-neutral-50/70 rounded-2xl border border-neutral-200/80 p-4 text-xs text-neutral-600 flex items-center gap-3">
+                <ShieldCheck className="w-5 h-5 text-neutral-900 shrink-0" />
+                <span>ক্যাশ অন ডেলিভারি — পার্সেল রিসিভ করার সময় ডেলিভারিম্যানের সামনে সম্পূর্ণ চেক করে নেওয়ার সুযোগ রয়েছে।</span>
+              </div>
+
+            </div>
+
+            {/* Right Column: Concierge Booking Form */}
+            <div className="lg:col-span-7 bg-white rounded-3xl border border-neutral-200 p-6 sm:p-8 shadow-sm">
+              <form onSubmit={handleSubmit} className="space-y-5">
+                
+                <div className="space-y-1 pb-4 border-b border-neutral-100">
+                  <div className="text-[11px] uppercase tracking-widest text-neutral-400 font-semibold flex items-center gap-2">
+                    <span className="font-['Plus_Jakarta_Sans',sans-serif]">CLIENT INFORMATION</span>
+                    <span className="text-neutral-300">//</span>
+                    <span>কাস্টমার তথ্য</span>
+                  </div>
+                  <h3 className="text-lg sm:text-xl font-bold text-neutral-900">
+                    ডেলিভারির জন্য আপনার তথ্য প্রদান করুন
                   </h3>
+                </div>
 
-                  {errorMessage && (
-                    <div className="p-3 rounded-xl bg-rose-100 dark:bg-rose-500/20 border border-rose-300 dark:border-rose-500/40 text-rose-800 dark:text-rose-200 text-xs sm:text-sm font-semibold flex items-center gap-2 animate-in fade-in">
-                      <AlertCircle className="w-4 h-4 shrink-0 text-rose-600 dark:text-rose-400" />
-                      <span>{errorMessage}</span>
-                    </div>
-                  )}
+                {errorMessage && (
+                  <div className="p-4 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs flex items-center gap-2">
+                    <AlertCircle className="w-4 h-4 shrink-0" />
+                    <span>{errorMessage}</span>
+                  </div>
+                )}
 
-                  {/* Name (text-base prevents iOS Safari zoom) */}
-                  <div className="space-y-1">
-                    <label className="text-xs font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
-                      <User className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
-                      <span>আপনার নাম *</span>
+                <div className="space-y-4 text-xs">
+                  <div>
+                    <label className="block font-bold text-neutral-800 mb-1.5">
+                      আপনার পূর্ণ নাম <span className="text-rose-500">*</span>
                     </label>
                     <input
                       type="text"
-                      autoComplete="name"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      placeholder="যেমন: মোঃ সাকিব রহমান"
-                      className="w-full px-3.5 py-3 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 focus:border-amber-500 dark:focus:border-amber-400 focus:ring-1 focus:ring-amber-400 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 text-base sm:text-sm outline-none transition-all min-h-[44px]"
+                      placeholder="যেমন: মোঃ কামরুল ইসলাম"
+                      className="w-full px-4 py-3 rounded-xl border border-neutral-200 bg-neutral-50/50 focus:bg-white focus:outline-hidden focus:border-neutral-900 focus:ring-1 focus:ring-neutral-900/10 text-sm transition-all"
+                      required
                     />
                   </div>
 
-                  {/* Phone (inputMode tel for numeric keyboard on mobile) */}
-                  <div className="space-y-1">
-                    <label className="text-xs font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
-                      <Phone className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
-                      <span>মোবাইল নম্বর (১১ ডিজিট) *</span>
+                  <div>
+                    <label className="block font-bold text-neutral-800 mb-1.5">
+                      মোবাইল নম্বর (১১ ডিজিট) <span className="text-rose-500">*</span>
                     </label>
                     <input
                       type="tel"
-                      inputMode="tel"
-                      autoComplete="tel"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                       placeholder="যেমন: 017XXXXXXXX"
-                      className="w-full px-3.5 py-3 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 focus:border-amber-500 dark:focus:border-amber-400 focus:ring-1 focus:ring-amber-400 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 text-base sm:text-sm outline-none transition-all font-mono min-h-[44px]"
+                      className="w-full px-4 py-3 rounded-xl border border-neutral-200 bg-neutral-50/50 focus:bg-white focus:outline-hidden focus:border-neutral-900 focus:ring-1 focus:ring-neutral-900/10 font-['Plus_Jakarta_Sans',sans-serif] text-sm transition-all"
+                      required
                     />
                   </div>
 
-                  {/* Address */}
-                  <div className="space-y-1">
-                    <label className="text-xs font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
-                      <MapPin className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
-                      <span>সম্পূর্ণ ডেলিভারি ঠিকানা *</span>
+                  <div>
+                    <label className="block font-bold text-neutral-800 mb-1.5">
+                      পূর্ণ ডেলিভারি ঠিকানা <span className="text-rose-500">*</span>
                     </label>
                     <textarea
-                      rows={2}
                       value={address}
                       onChange={(e) => setAddress(e.target.value)}
-                      placeholder="বাসা নং, রোড নং, এলাকা, থানা ও জেলা..."
-                      className="w-full px-3.5 py-2.5 sm:py-3 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 focus:border-amber-500 dark:focus:border-amber-400 focus:ring-1 focus:ring-amber-400 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 text-base sm:text-sm outline-none transition-all resize-none"
+                      rows={2}
+                      placeholder="বাসা নং, রোড নং, এলাকা, থানা ও জেলা লিখুন..."
+                      className="w-full px-4 py-3 rounded-xl border border-neutral-200 bg-neutral-50/50 focus:bg-white focus:outline-hidden focus:border-neutral-900 focus:ring-1 focus:ring-neutral-900/10 text-sm transition-all resize-none"
+                      required
                     />
                   </div>
 
-                  {/* Delivery Area Picker */}
-                  <div className="space-y-1.5 pt-0.5">
-                    <label className="text-xs font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
-                      <Truck className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
-                      <span>ডেলিভারি এলাকা:</span>
+                  <div>
+                    <label className="block font-bold text-neutral-800 mb-1.5">
+                      ডেলিভারি এলাকা নির্বাচন করুন:
                     </label>
-                    <div className="grid grid-cols-2 gap-2 sm:gap-3">
+                    <div className="grid grid-cols-2 gap-3">
                       <button
                         type="button"
                         onClick={() => setDistrict("dhaka")}
-                        className={`p-2.5 sm:p-3 rounded-xl border text-left transition-all cursor-pointer min-h-[48px] active:scale-98 ${
+                        className={`py-3 px-3 sm:px-4 rounded-xl border text-center transition-all cursor-pointer font-bold text-xs flex items-center justify-center gap-1.5 ${
                           district === "dhaka"
-                            ? "bg-amber-100/90 dark:bg-amber-500/20 border-amber-500 dark:border-amber-400 text-slate-900 dark:text-white ring-1 ring-amber-400 shadow-xs"
-                            : "bg-slate-50 dark:bg-slate-950 border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400"
+                            ? "bg-neutral-900 text-white border-neutral-900 shadow-xs"
+                            : "bg-neutral-50 text-neutral-700 border-neutral-200 hover:border-neutral-300"
                         }`}
                       >
-                        <div className="text-xs font-bold leading-tight">
-                          ঢাকা সিটির ভিতরে
-                        </div>
-                        <div className="text-[11px] text-amber-700 dark:text-amber-400 font-bold mt-0.5">
-                          চার্জ: ৳৭০
-                        </div>
+                        {district === "dhaka" && <Check className="w-3.5 h-3.5 shrink-0" />}
+                        <span className="truncate">ঢাকার ভিতরে (৳{toBanglaNumber(70)})</span>
                       </button>
-
                       <button
                         type="button"
                         onClick={() => setDistrict("outside")}
-                        className={`p-2.5 sm:p-3 rounded-xl border text-left transition-all cursor-pointer min-h-[48px] active:scale-98 ${
+                        className={`py-3 px-3 sm:px-4 rounded-xl border text-center transition-all cursor-pointer font-bold text-xs flex items-center justify-center gap-1.5 ${
                           district === "outside"
-                            ? "bg-amber-100/90 dark:bg-amber-500/20 border-amber-500 dark:border-amber-400 text-slate-900 dark:text-white ring-1 ring-amber-400 shadow-xs"
-                            : "bg-slate-50 dark:bg-slate-950 border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400"
+                            ? "bg-neutral-900 text-white border-neutral-900 shadow-xs"
+                            : "bg-neutral-50 text-neutral-700 border-neutral-200 hover:border-neutral-300"
                         }`}
                       >
-                        <div className="text-xs font-bold leading-tight">
-                          ঢাকার বাইরে (সারাদেশ)
-                        </div>
-                        <div className="text-[11px] text-amber-700 dark:text-amber-400 font-bold mt-0.5">
-                          চার্জ: ৳১৩০
-                        </div>
+                        {district === "outside" && <Check className="w-3.5 h-3.5 shrink-0" />}
+                        <span className="truncate">ঢাকার বাইরে (৳{toBanglaNumber(130)})</span>
                       </button>
                     </div>
                   </div>
-                </div>
 
-                {/* Right: Quantity & Price Calculation */}
-                <div className="lg:col-span-5 flex flex-col justify-between space-y-4 sm:space-y-6 bg-slate-50 dark:bg-slate-950/80 p-4 sm:p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
-                  <div className="space-y-3.5">
-                    <h4 className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider pb-2 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
-                      <span>অর্ডার সামারি</span>
-                      <span className="text-amber-700 dark:text-amber-400 text-xs font-bold">
-                        ক্যাশ অন ডেলিভারি
-                      </span>
-                    </h4>
-
-                    {/* Quantity Touch Counter */}
-                    <div className="flex items-center justify-between py-1.5 border-b border-slate-200 dark:border-slate-800">
-                      <span className="text-xs font-bold text-slate-700 dark:text-slate-300">
-                        পরিমাণ:
-                      </span>
-                      <div className="flex items-center gap-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-1">
-                        <button
-                          type="button"
-                          onClick={() => handleQuantityChange("dec")}
-                          className="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 flex items-center justify-center transition-colors cursor-pointer active:scale-90"
-                          aria-label="Decrease quantity"
-                        >
-                          <Minus className="w-3.5 h-3.5" />
-                        </button>
-                        <span className="w-6 text-center text-sm font-mono font-bold text-slate-900 dark:text-white">
-                          {toBanglaNumber(quantity)}
-                        </span>
-                        <button
-                          type="button"
-                          onClick={() => handleQuantityChange("inc")}
-                          className="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 flex items-center justify-center transition-colors cursor-pointer active:scale-90"
-                          aria-label="Increase quantity"
-                        >
-                          <Plus className="w-3.5 h-3.5" />
-                        </button>
-                      </div>
-                    </div>
-
-                    {/* Selected Watch Snippet */}
-                    <div className="flex items-center gap-2.5 p-2 rounded-xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800">
-                      <img
-                        src={selectedVariant.primaryImage}
-                        alt={selectedVariant.nameBangla}
-                        className="w-10 h-10 rounded-lg object-contain bg-slate-100 dark:bg-slate-950 p-0.5 shrink-0"
-                      />
-                      <div className="min-w-0 flex-1">
-                        <div className="text-xs font-bold text-slate-900 dark:text-white truncate">
-                          কোড {toBanglaNumber(selectedVariant.code)} ({selectedVariant.nameBangla})
-                        </div>
-                        <div className="text-[10px] text-slate-500 dark:text-slate-400">
-                          ৳৯৯০ × {toBanglaNumber(quantity)} = ৳{toBanglaNumber(subtotal)}
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Free Inclusions Notice */}
-                    <div className="p-2.5 rounded-xl bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/20 text-amber-900 dark:text-amber-300 text-xs space-y-0.5">
-                      <div className="font-bold flex items-center gap-1.5 text-amber-800 dark:text-amber-300 text-[11px]">
-                        <Gift className="w-3 h-3 text-amber-600 dark:text-amber-400" />
-                        <span>প্যাকেজে অন্তর্ভুক্ত:</span>
-                      </div>
-                      <div className="text-[10px] text-slate-700 dark:text-slate-300 pl-4">
-                        • {toBanglaNumber(quantity)} টি ঘড়ি + {toBanglaNumber(quantity)} টি বক্স + {toBanglaNumber(quantity * 2)} টি ব্যাটারি ফ্রি
-                      </div>
-                    </div>
-
-                    {/* Price Breakdown */}
-                    <div className="space-y-1.5 pt-1 text-xs">
-                      <div className="flex justify-between text-slate-500 dark:text-slate-400">
-                        <span>ঘড়ির মূল্য:</span>
-                        <span className="font-mono font-semibold text-slate-800 dark:text-slate-200">
-                          ৳{toBanglaNumber(subtotal)}
-                        </span>
-                      </div>
-                      <div className="flex justify-between text-slate-500 dark:text-slate-400">
-                        <span>ডেলিভারি চার্জ:</span>
-                        <span className="font-mono font-semibold text-slate-800 dark:text-slate-200">
-                          ৳{toBanglaNumber(deliveryCharge)}
-                        </span>
-                      </div>
-                      <div className="pt-2 border-t border-slate-200 dark:border-slate-800 flex justify-between items-baseline text-sm sm:text-base font-bold text-slate-900 dark:text-white">
-                        <span>সর্বমোট বিল:</span>
-                        <span className="text-xl sm:text-2xl font-black text-amber-600 dark:text-amber-400 font-mono">
-                          ৳{toBanglaNumber(totalPrice)}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Big Touch-friendly Submit Button */}
-                  <div className="space-y-2 pt-2">
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full py-3.5 sm:py-4 rounded-xl bg-gradient-to-r from-amber-500 via-amber-600 to-yellow-500 hover:from-amber-400 hover:to-yellow-400 text-slate-950 font-black text-sm sm:text-base uppercase tracking-wider shadow-lg shadow-amber-500/25 active:scale-98 transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 min-h-[50px]"
-                    >
-                      {isSubmitting ? (
-                        <div className="flex items-center gap-2 text-slate-950">
-                          <div className="w-5 h-5 border-2 border-slate-950 border-t-transparent rounded-full animate-spin" />
-                          <span>অর্ডার হচ্ছে...</span>
-                        </div>
-                      ) : (
-                        <>
-                          <PackageCheck className="w-5 h-5" />
-                          <span>অর্ডার কনফার্ম করুন (৳{toBanglaNumber(totalPrice)})</span>
-                        </>
-                      )}
-                    </button>
-
-                    <div className="flex items-center justify-center gap-1.5 text-[10px] sm:text-xs text-slate-500 dark:text-slate-400">
-                      <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
-                      <span>পণ্য হাতে পেয়ে চেক করে টাকা দিন</span>
-                    </div>
+                  <div>
+                    <label className="block font-bold text-neutral-800 mb-1.5">
+                      অতিরিক্ত কোনো নির্দেশনা (ঐচ্ছিক)
+                    </label>
+                    <input
+                      type="text"
+                      value={customerNote}
+                      onChange={(e) => setCustomerNote(e.target.value)}
+                      placeholder="যেমন: অফিসের ঠিকানায় বিকেল ৫টার পর ডেলিভারি দিন"
+                      className="w-full px-4 py-2.5 rounded-xl border border-neutral-200 bg-neutral-50/50 focus:bg-white focus:outline-hidden focus:border-neutral-900 text-xs transition-all"
+                    />
                   </div>
                 </div>
-              </div>
-            </form>
+
+                <div className="pt-3">
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full py-4 rounded-xl bg-neutral-900 hover:bg-neutral-800 text-white font-bold text-sm tracking-wide transition-all duration-150 flex items-center justify-center gap-2.5 cursor-pointer active:scale-98 disabled:opacity-70 shadow-md"
+                  >
+                    {isSubmitting ? (
+                      <span>অর্ডার সংরক্ষিত হচ্ছে...</span>
+                    ) : (
+                      <>
+                        <span>অর্ডার নিশ্চিত করুন — ৳{toBanglaNumber(totalPrice)}</span>
+                        <ArrowRight className="w-4 h-4 text-neutral-400" />
+                      </>
+                    )}
+                  </button>
+                </div>
+
+              </form>
+            </div>
+
           </div>
         )}
+
       </div>
     </section>
   );

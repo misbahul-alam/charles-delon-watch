@@ -3,6 +3,7 @@ import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
 import { Analytics } from "@vercel/analytics/react";
 import { HeroSection } from "./components/HeroSection";
 import { ProductBenefits } from "./components/ProductBenefits";
+import { VariantComparisonSection } from "./components/VariantComparisonSection";
 import { ProductGallery } from "./components/ProductGallery";
 import { OrderSection } from "./components/OrderSection";
 import { MobileStickyCTA } from "./components/MobileStickyCTA";
@@ -22,7 +23,7 @@ const AdminDashboard = lazy(() =>
 );
 
 function LandingPage() {
-  const [selectedVariantCode, setSelectedVariantCode] = useState<string>("12816");
+  const [selectedVariantCode, setSelectedVariantCode] = useState<string>("13297");
 
   const scrollToOrder = (variantCode?: string) => {
     if (variantCode) {
@@ -33,17 +34,20 @@ function LandingPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-[#090d16] text-slate-900 dark:text-slate-100 font-['Hind_Siliguri',sans-serif] relative selection:bg-amber-500 selection:text-slate-950 transition-colors duration-200">
-      {/* 1. Hero Section */}
+    <div className="min-h-screen w-full overflow-x-hidden bg-white text-neutral-900 font-['Hind_Siliguri',sans-serif] relative selection:bg-neutral-900 selection:text-white antialiased">
+      {/* 1. Asymmetric Studio Hero Section */}
       <HeroSection onOrderClick={scrollToOrder} />
 
-      {/* 2. Features & Package Section */}
+      {/* 2. The Story Behind the Dial & Technical Precision */}
       <ProductBenefits />
 
-      {/* 3. Product Gallery Section */}
-      <ProductGallery onSelectVariantOrder={scrollToOrder} />
+      {/* 3. Three Editions Swiss Comparison */}
+      <VariantComparisonSection onSelectVariant={scrollToOrder} />
 
-      {/* 4. Order Form Section */}
+      {/* 4. Lookbook Studio Gallery */}
+      <ProductGallery />
+
+      {/* 5. Studio Checkout Section */}
       <OrderSection initialVariantCode={selectedVariantCode} />
 
       {/* Sticky Mobile CTA & Floating WhatsApp Button */}
@@ -54,10 +58,10 @@ function LandingPage() {
 }
 
 const LoadingFallback = () => (
-  <div className="min-h-screen bg-slate-950 text-slate-300 flex items-center justify-center font-['Hind_Siliguri',sans-serif]">
+  <div className="min-h-screen bg-white text-neutral-600 flex items-center justify-center font-['Hind_Siliguri',sans-serif]">
     <div className="flex items-center gap-3">
-      <div className="w-6 h-6 border-2 border-amber-500 border-t-transparent rounded-full animate-spin" />
-      <span className="text-sm font-semibold">লোড হচ্ছে...</span>
+      <div className="w-5 h-5 border-2 border-neutral-900 border-t-transparent rounded-full animate-spin" />
+      <span className="text-xs font-['Plus_Jakarta_Sans',sans-serif] font-bold tracking-widest uppercase">LOADING...</span>
     </div>
   </div>
 );

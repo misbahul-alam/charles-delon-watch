@@ -1,65 +1,75 @@
 import React from "react";
-import { Clock, Phone, ShieldCheck, Lock } from "lucide-react";
+import { Phone, ShieldCheck, Lock } from "lucide-react";
 import { Link } from "react-router-dom";
 import { WhatsAppIcon } from "./icons/WhatsAppIcon";
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-900 text-slate-500 dark:text-slate-400 py-8 text-xs transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-        {/* Brand & Hotline */}
-        <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 sm:gap-6">
-          <div className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded-lg bg-amber-500 flex items-center justify-center text-slate-950 font-black">
-              <Clock className="w-3.5 h-3.5" />
-            </div>
-            <span className="text-sm font-black tracking-wider text-slate-900 dark:text-white uppercase">
-              CASIO ILLUMINATOR
+    <footer className="bg-white border-t border-neutral-200 py-12 text-xs text-neutral-500">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 space-y-8">
+        
+        {/* Top Masthead Row */}
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-8 border-b border-neutral-100">
+          <div className="space-y-1">
+            <span className="text-xl font-black tracking-tight text-neutral-900 uppercase font-['Plus_Jakarta_Sans',sans-serif]">
+              CHARLES DELON
             </span>
+            <p className="text-[11px] font-mono uppercase tracking-[0.2em] text-neutral-400">
+              WATERPROOF COLOR-CHANGING WRISTWATCH // SERIES 2026
+            </p>
           </div>
 
-          <span className="hidden sm:inline text-slate-300 dark:text-slate-700">|</span>
-
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-4 sm:gap-6 font-mono text-xs">
             <a
               href="tel:01753481548"
-              className="flex items-center gap-1.5 text-slate-700 dark:text-slate-300 hover:text-amber-600 transition-colors font-semibold"
+              className="flex items-center gap-2 text-neutral-800 hover:text-neutral-900 font-bold transition-colors"
             >
-              <Phone className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
-              <span>০১৭৫৩-৪৮১৫৪৮</span>
+              <Phone className="w-3.5 h-3.5 text-neutral-400" />
+              <span>01753-481548</span>
             </a>
+
+            <span className="text-neutral-200">/</span>
 
             <a
               href="https://wa.me/8801753481548"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1 text-emerald-600 dark:text-emerald-400 hover:underline font-semibold"
+              className="flex items-center gap-1.5 text-neutral-800 hover:text-neutral-900 font-bold transition-colors"
             >
               <WhatsAppIcon className="w-3.5 h-3.5" />
-              <span>হোয়াটসঅ্যাপ</span>
+              <span>WHATSAPP SUPPORT</span>
             </a>
+
+            <span className="text-neutral-200">/</span>
+
+            <span className="flex items-center gap-1.5 text-neutral-700">
+              <ShieldCheck className="w-3.5 h-3.5 text-neutral-900" />
+              <span>100% CASH ON DELIVERY</span>
+            </span>
+          </div>
+        </div>
+
+        {/* Bottom Legal & Copyright */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-[11px] text-neutral-400">
+          <div>
+            © {new Date().getFullYear()} Charles Delon Watch BD. সর্বস্বত্ব সংরক্ষিত।
           </div>
 
-          <span className="hidden sm:inline text-slate-300 dark:text-slate-700">|</span>
-
-          <span className="flex items-center gap-1 text-slate-600 dark:text-slate-400">
-            <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
-            <span>১০০% ক্যাশ অন ডেলিভারি</span>
-          </span>
+          <div className="flex items-center gap-6">
+            <a href="#hero" className="hover:text-neutral-900 transition-colors">
+              শীর্ষে যান
+            </a>
+            <Link
+              to="/admin"
+              className="flex items-center gap-1 hover:text-neutral-900 transition-colors"
+              title="Admin Login"
+            >
+              <Lock className="w-3 h-3" />
+              <span>ADMIN</span>
+            </Link>
+          </div>
         </div>
 
-        {/* Copyright & Admin Link */}
-        <div className="flex items-center gap-4 text-slate-400 dark:text-slate-600">
-          <span>© {new Date().getFullYear()} Casio Illuminator BD.</span>
-          <Link
-            to="/admin"
-            className="flex items-center gap-1 hover:text-slate-600 dark:hover:text-slate-400 transition-colors text-[11px]"
-            title="Admin Login"
-          >
-            <Lock className="w-3 h-3" />
-            <span>অ্যাডমিন</span>
-          </Link>
-        </div>
       </div>
     </footer>
   );

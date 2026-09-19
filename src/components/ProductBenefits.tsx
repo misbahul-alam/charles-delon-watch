@@ -1,167 +1,236 @@
 import React from 'react';
-import {
-  BatteryCharging,
-  Globe2,
-  Droplets,
-  Watch,
-  Sparkles,
-  CheckCircle,
-  Gift,
-  CheckCircle2,
-} from 'lucide-react';
-import { img12816_cushion } from '../images';
+import { Clock, Award, Compass, ChevronRight } from 'lucide-react';
+import { imgBlueHero, imgBlackFeature } from '../images';
 
 export const ProductBenefits: React.FC = () => {
-  const coreFeatures = [
-    {
-      icon: <BatteryCharging className="w-5 h-5 sm:w-6 sm:h-6 text-amber-600 dark:text-amber-400" />,
-      title: 'লং ব্যাটারি লাইফ',
-      subtitle: 'দীর্ঘদিন নিশ্চিন্তে ব্যবহার',
-      desc: 'একবার ব্যবহারে দীর্ঘদিন নিশ্চিন্ত। সাথে অতিরিক্ত ২টি ব্যাটারি একদম ফ্রি!',
-      borderColor: 'border-amber-300/60 dark:border-amber-500/30',
-    },
-    {
-      icon: <Globe2 className="w-5 h-5 sm:w-6 sm:h-6 text-cyan-600 dark:text-cyan-400" />,
-      title: 'ওয়ার্ল্ড ম্যাপ ডিসপ্লে',
-      subtitle: 'বিশ্ব সময় রিয়েল-টাইম ট্র্যাকিং',
-      desc: 'উপরের ডিসপ্লেতে রয়েছে ক্ষুদ্র পৃথিবী মানচিত্র ও ৩১টি বিশ্ব টাইমজোন।',
-      borderColor: 'border-cyan-300/60 dark:border-cyan-500/30',
-    },
-    {
-      icon: <Droplets className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600 dark:text-blue-400" />,
-      title: 'ওয়াটার রেসিস্ট্যান্স',
-      subtitle: 'পানির সংস্পর্শে নিরাপদ',
-      desc: 'দৈনন্দিন হাত ধোয়া, অজু করা কিংবা হঠাৎ বৃষ্টিতে ঘড়িটি সম্পূর্ণ সুরক্ষিত।',
-      borderColor: 'border-blue-300/60 dark:border-blue-500/30',
-    },
-    {
-      icon: <Watch className="w-5 h-5 sm:w-6 sm:h-6 text-orange-600 dark:text-orange-400" />,
-      title: 'প্রিমিয়াম লেদার স্ট্র্যাপ',
-      subtitle: 'সর্বোচ্চ আরাম ও আভিজাত্য',
-      desc: 'জেনুইন সফট লেদার ও কনট্রাস্ট স্টিচিং যা পরতে আরামদায়ক ও স্টাইলিশ।',
-      borderColor: 'border-orange-300/60 dark:border-orange-500/30',
-    },
+  const technicalSpecs = [
+    { label: 'CALIBRE // MOVEMENT', value: 'PRECISION QUARTZ ANALOG' },
+    { label: 'CASE DIAMETER', value: '40 MM // SLIM PROFILE' },
+    { label: 'WATER RESISTANCE', value: '3 ATM (30 METERS DAILY PROOF)' },
+    { label: 'CRYSTAL // GLASS', value: 'HARDENED MINERAL PRISM' },
+    { label: 'STRAP COMPOSITION', value: 'ULTRA-SOFT HYPOALLERGENIC SILICONE' },
+    { label: 'DIAL ARCHITECTURE', value: 'LIGHT-REACTIVE MULTI-GRADIENT' },
+    { label: 'INDICES // NUMERALS', value: 'HIGH-CONTRAST ARABIC 1–12' },
+    { label: 'WRIST FITMENT', value: 'UNISEX ERGONOMIC (FOR HIM & HER)' },
   ];
 
-  const whyBuyPoints = [
-    'লেদার স্ট্র্যাপ ব্যবহার করায় এটি সাধারণ প্লাস্টিক বা চেইনের চেয়ে অনেক বেশি স্টাইলিশ এবং ফরমাল বা ক্যাজুয়াল পোশাকে দারুণ ফুটে ওঠে।',
-    'ডিজিটাল ও অ্যানালগ ডুয়াল টাইম ডিসপ্লে নিখুঁত সময় ও অ্যালার্ম নিশ্চয়তা দেয়।',
-    '৮০ ও ৯০-এর ক্লাসিক ক্যাসিও রয়্যাল ভিন্টেজ লুক আপনার ব্যক্তিত্বে রাজকীয় আভিজাত্য যোগ করে।',
-  ];
-
-  const packageItems = [
-    { title: '১ টি প্রিমিয়াম ঘড়ি', desc: 'ক্যাসিও ইলুমিনেটর ওয়াচ' },
-    { title: '১ টি আকর্ষণীয় বক্স', desc: 'গিফট করার উপযোগী বক্স' },
-    { title: '২ টি অতিরিক্ত ব্যাটারি', desc: 'ফ্রি কোয়ার্টজ ব্যাটারি' },
-  ];
 
   return (
-    <section id="features" className="py-12 sm:py-16 relative bg-slate-100/70 dark:bg-slate-950 overflow-hidden transition-colors duration-300">
-      {/* Ambient Lights */}
-      <div className="absolute top-1/2 left-0 w-72 sm:w-96 h-72 sm:h-96 radial-glow-amber opacity-35 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 right-0 w-72 sm:w-96 h-72 sm:h-96 radial-glow-cyan opacity-25 blur-3xl pointer-events-none" />
-
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12 space-y-2">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-500/10 border border-amber-300 dark:border-amber-500/30 text-amber-900 dark:text-amber-300 text-xs font-bold uppercase tracking-wider">
-            <Sparkles className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
-            <span>মূল বৈশিষ্ট্যসমূহ</span>
-          </div>
-          <h2 className="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
-            ক্যাসিও ইলুমিনেটরের বিশেষ সুবিধাসমূহ ✨
-          </h2>
-          <p className="text-slate-600 dark:text-slate-400 text-xs sm:text-sm leading-relaxed">
-            দৈনন্দিন ব্যবহারে স্থায়িত্ব এবং ফ্যাশনে আভিজাত্যের অনন্য সমন্বয়।
-          </p>
+    <section id="features" className="bg-[#fafbfc] border-b border-neutral-200 divide-y divide-neutral-200/80">
+      
+      {/* Editorial Header Masthead */}
+      <div className="py-14 sm:py-20 max-w-6xl mx-auto px-4 sm:px-6 text-center space-y-3">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-neutral-200 text-neutral-800 text-[11px] font-['Plus_Jakarta_Sans',sans-serif] uppercase tracking-[0.25em] font-bold shadow-2xs">
+          <Award className="w-3.5 h-3.5 text-neutral-900" />
+          <span>SWISS HOROLOGY STANDARDS // ARCHITECTURE</span>
         </div>
+        <h2 className="text-2xl sm:text-4xl lg:text-[42px] font-bold text-neutral-900 tracking-tight leading-tight">
+          প্রযুক্তি ও নান্দনিকতার এক রাজকীয় সংমিশ্রণ
+        </h2>
+        <p className="text-xs sm:text-sm text-neutral-500 max-w-xl mx-auto font-normal">
+          প্রতিটি ডিটেইলে সুইস মিনিমালিজম ও আধুনিক মেটেরিয়ালের অনন্য প্রতিফলন।
+        </p>
+      </div>
 
-        {/* 4 Core Features: 2x2 Grid on Mobile, 4-Cols on Desktop */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-5">
-          {coreFeatures.map((item, idx) => (
-            <div
-              key={idx}
-              className={`p-3.5 sm:p-5 rounded-2xl bg-white dark:bg-slate-900/90 border ${item.borderColor} backdrop-blur-xl relative flex flex-col justify-between shadow-xs hover:border-amber-400 transition-all`}
-            >
-              <div>
-                <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-slate-50 dark:bg-slate-950/80 border border-slate-200 dark:border-slate-800 flex items-center justify-center mb-2.5 sm:mb-3.5 shadow-inner">
-                  {item.icon}
+      {/* Feature Story 01: The Optical Prism Gradient */}
+      <div className="py-16 sm:py-24 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+            
+            {/* Visual Photography Frame */}
+            <div className="lg:col-span-6 order-2 lg:order-1">
+              <div className="relative rounded-3xl overflow-hidden border border-neutral-200/80 bg-white shadow-lg aspect-square max-w-lg mx-auto group">
+                <img
+                  src={imgBlueHero}
+                  alt="Charles Delon Light-Reactive Gradient Dial"
+                  className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-102"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+
+            {/* Editorial Story */}
+            <div className="lg:col-span-6 order-1 lg:order-2 space-y-6">
+              <div className="space-y-2">
+                <div className="text-[11px] font-['Plus_Jakarta_Sans',sans-serif] uppercase tracking-[0.25em] text-neutral-400 font-bold">
+                  FEATURE I // THE PRISM DIAL
                 </div>
-                <span className="text-[10px] sm:text-[11px] font-bold text-amber-700 dark:text-amber-400 uppercase tracking-wider block leading-tight">
-                  {item.subtitle}
-                </span>
-                <h3 className="text-xs sm:text-base font-bold text-slate-900 dark:text-white leading-snug mt-1">
-                  {item.title}
+                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-neutral-900 tracking-tight leading-snug">
+                  আলোর প্রতিফলন ও দিক পরিবর্তনে ডায়ালের রূপবদল
                 </h3>
-                <p className="text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 leading-relaxed mt-1.5">
-                  {item.desc}
+                <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed pt-1">
+                  ঘড়িটিতে ব্যবহার করা হয়েছে বিশেষ অপটিক্যাল প্রিজম মাল্টিকালার ডায়াল। স্বাভাবিক ঘরের আলো, দিনের রোদ কিংবা রাতের মৃদু আলোতে ঘড়িটির ডায়াল বিভিন্ন দৃষ্টিনন্দন গ্রেডিয়েন্ট শেড তৈরি করে।
                 </p>
               </div>
-            </div>
-          ))}
-        </div>
 
-        {/* Why Buy & Package Inclusions Combined Card */}
-        <div className="mt-8 sm:mt-12 grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 rounded-2xl sm:rounded-3xl p-4 sm:p-8 shadow-md">
-          {/* Why Buy Points */}
-          <div className="lg:col-span-7 space-y-3 sm:space-y-4">
-            <div className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-700 dark:text-amber-400 uppercase tracking-wider">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>এটা কেন কিনবেন?</span>
-            </div>
-            <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white leading-tight">
-              স্টাইলিশ লুক আর নির্ভুল সময়ের নিশ্চয়তা
-            </h3>
-            <div className="space-y-2.5 pt-1">
-              {whyBuyPoints.map((point, idx) => (
-                <div key={idx} className="flex items-start gap-2.5">
-                  <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-amber-100 dark:bg-amber-500/20 text-amber-600 dark:text-amber-400 flex items-center justify-center shrink-0 mt-0.5">
-                    <CheckCircle className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-amber-500/20" />
+              {/* Horology Callout Bullets */}
+              <div className="space-y-3 pt-2">
+                <div className="p-4 rounded-2xl bg-neutral-50 border border-neutral-200/80 flex items-start gap-3.5">
+                  <span className="font-['Plus_Jakarta_Sans',sans-serif] text-xs font-bold text-neutral-400 mt-0.5">01</span>
+                  <div>
+                    <h4 className="text-xs sm:text-sm font-bold text-neutral-900">ডায়নামিক কালার চেঞ্জিং ক্রিস্টাল</h4>
+                    <p className="text-[11px] sm:text-xs text-neutral-500 mt-0.5 leading-relaxed">
+                      হাতের সামান্য নাড়াচাড়াতেই ডায়ালে বর্ণালীর মতো রঙের রূপবদল ঘটে।
+                    </p>
                   </div>
-                  <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-                    {point}
-                  </p>
                 </div>
-              ))}
-            </div>
-          </div>
 
-          {/* Package Inclusions */}
-          <div className="lg:col-span-5 bg-slate-50 dark:bg-slate-950 p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-slate-200 dark:border-slate-800 space-y-3 sm:space-y-4">
-            <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-2.5">
-              <div className="flex items-center gap-2 text-xs sm:text-sm font-bold text-slate-900 dark:text-white">
-                <Gift className="w-4 h-4 text-amber-600 dark:text-amber-400" />
-                <span>প্যাকেজে যা যা থাকছে:</span>
+                <div className="p-4 rounded-2xl bg-neutral-50 border border-neutral-200/80 flex items-start gap-3.5">
+                  <span className="font-['Plus_Jakarta_Sans',sans-serif] text-xs font-bold text-neutral-400 mt-0.5">02</span>
+                  <div>
+                    <h4 className="text-xs sm:text-sm font-bold text-neutral-900">হাই-কনট্রাস্ট ১ থেকে ১২ অ্যানালগ মার্কার</h4>
+                    <p className="text-[11px] sm:text-xs text-neutral-500 mt-0.5 leading-relaxed">
+                      সুস্পষ্ট ফন্টে মুদ্রিত মার্কারের কারণে যে কোনো কোণ থেকেই নিখুঁত সময় দর্শন।
+                    </p>
+                  </div>
+                </div>
               </div>
-              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-500/20 text-amber-800 dark:text-amber-300 border border-amber-300 dark:border-amber-500/30">
-                ফ্রি গিফট
-              </span>
             </div>
 
-            <div className="relative rounded-xl overflow-hidden aspect-16/9 bg-slate-200 dark:bg-slate-900">
-              <img
-                src={img12816_cushion}
-                alt="Watch and Box Cushion Presentation"
-                className="w-full h-full object-cover"
-              />
-            </div>
-
-            <div className="space-y-1.5">
-              {packageItems.map((item, idx) => (
-                <div key={idx} className="flex items-center justify-between text-xs py-1 border-b border-slate-100 dark:border-slate-800/60 last:border-0">
-                  <span className="font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5 text-[11px] sm:text-xs">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
-                    {item.title}
-                  </span>
-                  <span className="text-slate-500 dark:text-slate-400 text-[10px] sm:text-[11px]">
-                    {item.desc}
-                  </span>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </div>
+
+      {/* Feature Story 02: Daily Waterproofing & Ergonomic Silicone */}
+      <div className="py-16 sm:py-24 bg-[#fafbfc]">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+            
+            {/* Editorial Story */}
+            <div className="lg:col-span-6 space-y-6">
+              <div className="space-y-2">
+                <div className="text-[11px] font-['Plus_Jakarta_Sans',sans-serif] uppercase tracking-[0.25em] text-neutral-400 font-bold">
+                  FEATURE II // WATERPROOF & ERGONOMICS
+                </div>
+                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-neutral-900 tracking-tight leading-snug">
+                  ১০০% ওয়াটারপ্রুফ বডি ও হাই-গ্রেড সিলিকন স্ট্র্যাপ
+                </h3>
+                <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed pt-1">
+                  দৈনন্দিন জীবনের সব বাস্তব পরিস্থিতিতে ব্যবহারের উপযোগী করে তৈরি। ওযু, হাত ধোয়া কিংবা হঠাৎ বৃষ্টির সময় ঘড়ি খুলে রাখার ঝামেলা নেই। নরম রাবার/সিলিকন স্ট্র্যাপ সারাদিন কব্জিকে রাখে আরামদায়ক।
+                </p>
+              </div>
+
+              {/* Horology Callout Bullets */}
+              <div className="space-y-3 pt-2">
+                <div className="p-4 rounded-2xl bg-white border border-neutral-200/80 flex items-start gap-3.5 shadow-2xs">
+                  <span className="font-['Plus_Jakarta_Sans',sans-serif] text-xs font-bold text-neutral-400 mt-0.5">03</span>
+                  <div>
+                    <h4 className="text-xs sm:text-sm font-bold text-neutral-900">৩-লেয়ার ওয়াটার রেসিস্ট্যান্ট সিলিং</h4>
+                    <p className="text-[11px] sm:text-xs text-neutral-500 mt-0.5 leading-relaxed">
+                      ঘড়ির ইন্টারনাল কেসিং সম্পূর্ণ পানিরোধী গ্যাসকেট দ্বারা সুরক্ষিত।
+                    </p>
+                  </div>
+                </div>
+
+                <div className="p-4 rounded-2xl bg-white border border-neutral-200/80 flex items-start gap-3.5 shadow-2xs">
+                  <span className="font-['Plus_Jakarta_Sans',sans-serif] text-xs font-bold text-neutral-400 mt-0.5">04</span>
+                  <div>
+                    <h4 className="text-xs sm:text-sm font-bold text-neutral-900">হাইপোঅ্যালার্জেনিক আল্ট্রা-সফট সিলিকন</h4>
+                    <p className="text-[11px] sm:text-xs text-neutral-500 mt-0.5 leading-relaxed">
+                      ত্বকের সাথে সংবেদনশীল এবং নমনীয়, দীর্ঘ ব্যবহারে কোনো দাগ বা ঘাম জমতে দেয় না।
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Visual Photography Frame */}
+            <div className="lg:col-span-6">
+              <div className="relative rounded-3xl overflow-hidden border border-neutral-200/80 bg-white shadow-lg aspect-square max-w-lg mx-auto group">
+                <img
+                  src={imgBlackFeature}
+                  alt="Charles Delon 100% Waterproof Feature"
+                  className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-102"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      {/* Horology Specifications & Technical Precision Matrix */}
+      <div className="py-16 sm:py-24 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+            
+            {/* Left: Engineering & Craftsmanship Standards */}
+            <div className="lg:col-span-6 space-y-6">
+              <div className="space-y-1">
+                <div className="text-[11px] uppercase tracking-[0.25em] text-neutral-400 font-semibold flex items-center gap-2">
+                  <Compass className="w-3.5 h-3.5 text-neutral-900" />
+                  <span className="font-['Plus_Jakarta_Sans',sans-serif]">CRAFTSMANSHIP STANDARDS</span>
+                  <span className="text-neutral-300">//</span>
+                  <span>নির্মাণ মানদণ্ড</span>
+                </div>
+                <h3 className="text-2xl sm:text-3xl font-bold text-neutral-900">
+                  সুইস কারিগরি ও নিখুঁত ফিনিশিং
+                </h3>
+              </div>
+
+              <div className="space-y-3 pt-1">
+                <div className="p-4 rounded-2xl bg-neutral-50/70 border border-neutral-200/80 space-y-1">
+                  <div className="flex items-center gap-2 text-xs sm:text-sm font-bold text-neutral-900">
+                    <ChevronRight className="w-3.5 h-3.5 text-neutral-900 shrink-0" />
+                    <span>হার্ডেনড মিনারেল প্রিজম গ্লাস</span>
+                  </div>
+                  <p className="text-[11px] sm:text-xs text-neutral-600 leading-relaxed pl-5 font-normal">
+                    দৈনন্দিন ব্যবহারে দাগ ও আঁচড় প্রতিরোধী বিশেষ মিনারেল ক্রিস্টাল কোটিং।
+                  </p>
+                </div>
+
+                <div className="p-4 rounded-2xl bg-neutral-50/70 border border-neutral-200/80 space-y-1">
+                  <div className="flex items-center gap-2 text-xs sm:text-sm font-bold text-neutral-900">
+                    <ChevronRight className="w-3.5 h-3.5 text-neutral-900 shrink-0" />
+                    <span>প্রেসিশন কোয়ার্টজ মুভমেন্ট</span>
+                  </div>
+                  <p className="text-[11px] sm:text-xs text-neutral-600 leading-relaxed pl-5 font-normal">
+                    সুইস আর্কিটেকচার অনুযায়ী তৈরি অ্যানালগ গিয়ার যা দেয় নিখুঁত সময় ও দীর্ঘস্থায়ী ব্যাটারি ব্যাকআপ।
+                  </p>
+                </div>
+
+                <div className="p-4 rounded-2xl bg-neutral-50/70 border border-neutral-200/80 space-y-1">
+                  <div className="flex items-center gap-2 text-xs sm:text-sm font-bold text-neutral-900">
+                    <ChevronRight className="w-3.5 h-3.5 text-neutral-900 shrink-0" />
+                    <span>স্লিম এরগোনোমিক কেসিং</span>
+                  </div>
+                  <p className="text-[11px] sm:text-xs text-neutral-600 leading-relaxed pl-5 font-normal">
+                    কব্জিতে অতিরিক্ত ভারী ভাব তৈরি করে না, সারাদিন স্বাচ্ছন্দ্যে পরিধানযোগ্য।
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Right: Technical Specifications Matrix */}
+            <div className="lg:col-span-6 space-y-6">
+              <div className="space-y-1">
+                <div className="text-[11px] uppercase tracking-[0.25em] text-neutral-400 font-semibold flex items-center gap-2">
+                  <Clock className="w-3.5 h-3.5 text-neutral-900" />
+                  <span className="font-['Plus_Jakarta_Sans',sans-serif]">DATA SHEET</span>
+                  <span className="text-neutral-300">//</span>
+                  <span>প্রযুক্তিগত বিবরণ</span>
+                </div>
+                <h3 className="text-2xl sm:text-3xl font-bold text-neutral-900">
+                  সুইস স্ট্যান্ডার্ড স্পেসিফিকেশন
+                </h3>
+              </div>
+
+              {/* Clean Swiss Hairline Table */}
+              <div className="rounded-2xl border border-neutral-200 overflow-hidden bg-white shadow-2xs divide-y divide-neutral-100 text-xs font-['Plus_Jakarta_Sans',sans-serif]">
+                {technicalSpecs.map((spec, i) => (
+                  <div key={i} className="p-3.5 sm:p-4 flex items-center justify-between hover:bg-neutral-50/60 transition-colors">
+                    <span className="text-neutral-500 font-medium">{spec.label}</span>
+                    <span className="text-neutral-900 font-bold text-right">{spec.value}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
     </section>
   );
 };

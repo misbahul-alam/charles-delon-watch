@@ -251,7 +251,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
             <div className="flex items-center gap-2">
               <span className="w-3 h-3 rounded-full bg-emerald-500 animate-pulse" />
               <h1 className="text-2xl sm:text-3xl font-extrabold text-white">
-                অর্ডার ম্যানেজমেন্ট প্যানেল 📦
+                অর্ডার ম্যানেজমেন্ট প্যানেল
               </h1>
             </div>
             <p className="text-slate-400 text-sm mt-1">

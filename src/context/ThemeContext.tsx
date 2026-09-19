@@ -1,10 +1,10 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { createContext, useEffect } from 'react';
 
-export type Theme = 'light' | 'dark' | 'system';
+export type Theme = 'light';
 
 export interface ThemeContextType {
-  theme: Theme;
-  resolvedTheme: 'light' | 'dark';
+  theme: 'light';
+  resolvedTheme: 'light';
   setTheme: (theme: Theme) => void;
 }
 
@@ -12,58 +12,25 @@ export interface ThemeContextType {
 export const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  // Clean up any legacy manual override from localStorage so it strictly follows system preference
   useEffect(() => {
+    // Strictly enforce light mode
+    const root = document.documentElement;
+    root.classList.remove('dark');
+    root.style.colorScheme = 'light';
     try {
+      localStorage.removeItem('theme');
       localStorage.removeItem('casio_theme');
     } catch {
       // Ignore
     }
   }, []);
 
-  const [systemIsDark, setSystemIsDark] = useState<boolean>(() => {
-    if (typeof window !== 'undefined' && window.matchMedia) {
-      return window.matchMedia('(prefers-color-scheme: dark)').matches;
-    }
-    return true;
-  });
-
-  // Listen to OS / device system preference changes in real time
-  useEffect(() => {
-    if (typeof window === 'undefined' || !window.matchMedia) return;
-
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    // Synchronize initial state
-    setSystemIsDark(mediaQuery.matches);
-
-    const handleChange = (e: MediaQueryListEvent) => {
-      setSystemIsDark(e.matches);
-    };
-
-    mediaQuery.addEventListener('change', handleChange);
-    return () => mediaQuery.removeEventListener('change', handleChange);
-  }, []);
-
-  const resolvedTheme: 'light' | 'dark' = systemIsDark ? 'dark' : 'light';
-
-  // Apply or remove .dark class from html element
-  useEffect(() => {
-    const root = document.documentElement;
-    if (resolvedTheme === 'dark') {
-      root.classList.add('dark');
-      root.style.colorScheme = 'dark';
-    } else {
-      root.classList.remove('dark');
-      root.style.colorScheme = 'light';
-    }
-  }, [resolvedTheme]);
-
   const setTheme = (_newTheme: Theme) => {
-    // Theme is automatic with device system
+    // Light mode only
   };
 
   return (
-    <ThemeContext.Provider value={{ theme: 'system', resolvedTheme, setTheme }}>
+    <ThemeContext.Provider value={{ theme: 'light', resolvedTheme: 'light', setTheme }}>
       {children}
     </ThemeContext.Provider>
   );
